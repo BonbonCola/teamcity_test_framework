@@ -1,0 +1,10 @@
+title = "Dev env config"
+
+#[database]
+
+[servers]
+  [servers.dev]
+  host = "localhost:8111"
+
+  [servers.stage]
+  host = "10.0.0.2"
