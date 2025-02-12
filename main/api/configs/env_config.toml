@@ -1,10 +1,9 @@
-title = "Dev env config"
-
-#[database]
-
 [servers]
-  [servers.dev]
-  host = "localhost:8111"
-
-  [servers.stage]
-  host = "10.0.0.2"
+[servers.dev]
+base_url = "localhost:8111"
+username = "admin"
+password = "admin"
+[servers.stage]
+base_url = "10.0.0.2"
+username = "admin"
+password = "admin"
