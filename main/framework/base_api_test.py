@@ -1,7 +1,7 @@
 import pytest
 from main.api.specs.specifications import Specifications
 from main.api.configs.config import Config
-from main.api.models.user import User
+from main.api.models.user_model import User
 
 
 class BaseApiTest:
