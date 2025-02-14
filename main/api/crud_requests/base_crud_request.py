@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from main.api.crud_requests import endpoints
+from main.api.crud_requests.endpoints import Endpoint
+from main.api.specs.specifications import Specifications
 
 class BaseCRUDRequest(ABC):
 
