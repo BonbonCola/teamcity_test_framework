@@ -1,6 +1,4 @@
 from abc import ABC, abstractmethod
-from main.api.crud_requests.endpoints import Endpoint
-from main.api.specs.specifications import Specifications
 
 class BaseCRUDRequest(ABC):
 
@@ -22,6 +20,6 @@ class BaseCRUDRequest(ABC):
 
 class Request():
     # Request - это класс, описывающий меняющиеся параметры запроса, такие как: спецификация, эндпоинт (relative URL, model)
-    def __init__(self, Specifications, Endpoint):
-        self.session = Specifications,
-        self.endpoint = Endpoint
+    def __init__(self, specifications, endpoint):
+        self.session = specifications
+        self.endpoint = endpoint

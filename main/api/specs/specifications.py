@@ -3,34 +3,28 @@ import logging
 from main.api.configs.config import Config
 
 class Specifications:
-    _instance = None
-
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
 
     def __init__(self):
-        self._instance.session = requests.Session()  # создаем сессию
-        self._instance.config = Config()  # берем конфиг
-        self._instance.session.headers.update({
+        self.session = requests.Session()  # создаем сессию
+        self.config = Config().properties # берем конфиг
+        self.session.headers.update({
             "Content-Type": "application/json",
             "Accept": "application/json"
         })
-        self._instance.session
 
-    def get_auth_session(self, user):
-        """ Возвращает сессию requests.Session() с предустановленными заголовками и авторизацией """
-        auth = user.username, user.password  # считываем пользователя и пароль из конфига
-        self._instance.session.auth = auth  # и добавляем в текущую сессию
-        return self._instance.session
+    def authSpec(self):
+        auth = self.config.servers.dev.username, self.config.servers.dev.password  # считываем пользователя и пароль из конфига
+        self.session.auth = auth  # и добавляем в текущую сессию
+        return self.session
 
-    def get_unauth_session(self):
-        """ Возвращает сессию requests.Session() без авторизации """
-        return self._instance.session
+    def unAuthSpec(self):
+        return self.session
 
-    def get_config(self):
-        """ Возвращает конфиг """
-        return self._instance.config
+    def superUserSpec(self):
+        auth = "", self.config.servers.dev.superusertoken
+        self.session.auth = auth
+        return self.session
+
+
 
 

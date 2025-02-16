@@ -1,23 +1,27 @@
+from tokenize import endpats
+
+from main.api.configs.config import Config
 from main.api.crud_requests.base_crud_request import BaseCRUDRequest, Request
+from main.api.specs.specifications import Specifications
 
 
 class UncheckedRequest(BaseCRUDRequest, Request):
 
-    def __init__(self, Specifications, Endpoint):
-        super().__init__(Specifications, Endpoint)
+    def __init__(self, specifications: Specifications, endpoint):
+        super().__init__(specifications, endpoint)
 
     def read(self, id):
-        response = self.session.get_auth_session.get(f"http://{self.endpoint.BUILD_TYPES.url}/id:{id}")
+        response = self.session.get(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
         return response
 
     def update(self, id, model):
-        response = self.session.get_auth_session.put(f"http://{self.endpoint.BUILD_TYPES.url}/id:{id}", model)
+        response = self.session.put(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}", json=model)
         return response
 
     def delete(self, id):
-        response = self.session.get_auth_session.delete(f"http://{self.endpoint.BUILD_TYPES.url}/id:{id}")
+        response = self.session.delete(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
         return response
 
     def create(self, model):
-        response = self.session.get_auth_session.post(f"http://{self.endpoint.BUILD_TYPES.url}", model)
+        response = self.session.post(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}", json=model)
         return response

@@ -1,19 +1,15 @@
 import requests
 import pytest
 import allure
+
+from main.api.crud_requests.checked_request import CheckedRequest
+from main.api.models.user_model import User
+from main.api.specs.specifications import Specifications
 from main.framework.base_api_test import BaseApiTest
 from main.framework.logger import logger
+from main.api.crud_requests.endpoints import Endpoint
+from tests.conftest import generate_test_user
 
-class TestDummy(BaseApiTest):
-
-    def test_get_projects(self):
-        with allure.step("Отправляем GET-запрос на список проектов"):
-            response = self.session.get(f"http://{self.base_url}/app/rest/projects")
-            allure.attach(response.text, name="API Response", attachment_type=allure.attachment_type.JSON)
-        logger.info(f"Ответ API: {response.json()}")
-        with allure.step("Получаем список проектов"):
-            pass
-        assert response.status_code == 200, f"Ошибка: {response.status_code}"
 
 @pytest.mark.regression
 class TestBuildType:
@@ -26,7 +22,9 @@ class TestBuildType:
     def test_user_creates_build_type(self):
         """User should be able to create build type"""
         with allure.step("Create user"):
-            pass
+            user = generate_test_user("PROJECT_ADMIN", "g")
+            user_request = CheckedRequest(Specifications().superUserSpec(), Endpoint.USERS.url)
+            new_user = user_request.create(user.model_dump())
         with allure.step("Create project by user"):
             pass
         with allure.step("Create buildType for project by user"):
