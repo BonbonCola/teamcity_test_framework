@@ -12,8 +12,8 @@ class Specifications:
             "Accept": "application/json"
         })
 
-    def authSpec(self):
-        auth = self.config.servers.dev.username, self.config.servers.dev.password  # считываем пользователя и пароль из конфига
+    def authSpec(self, user):
+        auth = user.username, user.password  # считываем пользователя и пароль из конфига
         self.session.auth = auth  # и добавляем в текущую сессию
         return self.session
 

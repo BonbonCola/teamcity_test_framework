@@ -3,12 +3,13 @@ import pytest
 import allure
 
 from main.api.crud_requests.checked_request import CheckedRequest
+from main.api.models.api_models import BuildType
 from main.api.models.user_model import User
 from main.api.specs.specifications import Specifications
 from main.framework.base_api_test import BaseApiTest
 from main.framework.logger import logger
 from main.api.crud_requests.endpoints import Endpoint
-from tests.conftest import generate_test_user
+from tests.conftest import generate_test_user, generate_test_project, generate_test_build_type
 
 
 @pytest.mark.regression
@@ -26,11 +27,18 @@ class TestBuildType:
             user_request = CheckedRequest(Specifications().superUserSpec(), Endpoint.USERS.url)
             new_user = user_request.create(user.model_dump())
         with allure.step("Create project by user"):
-            pass
+            project = generate_test_project()
+            project_request = CheckedRequest(Specifications().authSpec(user), Endpoint.PROJECTS.url)
+            new_project  = project_request.create(project.model_dump())
+            project.locator = None
         with allure.step("Create buildType for project by user"):
-            pass
+            buildtype = generate_test_build_type(project)
+            buildtype_request = CheckedRequest(Specifications().authSpec(user), Endpoint.BUILD_TYPES.url)
+            new_buildtype = buildtype_request.create(buildtype.model_dump())
         with allure.step("Check buildType was created successfully with correct data"):
-            pass
+            created_buildtype_request = CheckedRequest(Specifications().authSpec(user), Endpoint.BUILD_TYPES.url)
+            created_buildtype = created_buildtype_request.read(buildtype.id)
+            assert created_buildtype.json()["id"] == buildtype.id,  f"Ошибка: {created_buildtype["id"]} != {buildtype.id}"
 
     @pytest.mark.negative
     @pytest.mark.crud

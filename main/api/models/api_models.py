@@ -1,4 +1,5 @@
 from pydantic import BaseModel # аналог Java Lombok + валидация полей
+from typing import Optional
 
 class Project(BaseModel):
     id: str
@@ -18,4 +19,4 @@ class BuildType(BaseModel):
     id: str
     name: str
     project: Project
-    steps: Steps
+    steps:  Optional[Steps] = None

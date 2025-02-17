@@ -21,6 +21,8 @@ class CheckedRequest(BaseCRUDRequest, Request):
 
     def read(self, id):
         response = self.unchecked_request.read(id)
+        print(f"Status Code: {response.status_code}")
+        print(f"Response Text: {response.text}")
         assert response.status_code == 200, f"Ошибка: {response.status_code}"
         # Десериализуем JSON-ответ в соответствующий Pydantic-класс
         #model_class: Type[BaseModel] = self.endpoint.model_class
