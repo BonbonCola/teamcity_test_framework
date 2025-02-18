@@ -3,6 +3,7 @@ import pytest
 import allure
 
 from main.api.crud_requests.checked_request import CheckedRequest
+from main.api.crud_requests.unchecked_request import UncheckedRequest
 from main.api.models.api_models import BuildType
 from main.api.models.user_model import User
 from main.api.specs.specifications import Specifications
@@ -13,7 +14,7 @@ from tests.conftest import generate_test_user, generate_test_project, generate_t
 
 
 @pytest.mark.regression
-class TestBuildType:
+class TestBuildType(BaseApiTest):
 
     @pytest.mark.positive
     @pytest.mark.crud
@@ -23,22 +24,18 @@ class TestBuildType:
     def test_user_creates_build_type(self):
         """User should be able to create build type"""
         with allure.step("Create user"):
-            user = generate_test_user("PROJECT_ADMIN", "g")
-            user_request = CheckedRequest(Specifications().superUserSpec(), Endpoint.USERS.url)
-            new_user = user_request.create(user.model_dump())
+            user_request = CheckedRequest(self.specifications.superUserSpec(), Endpoint.USERS.url)
+            new_user = user_request.create(self.test_data.user.model_dump())
         with allure.step("Create project by user"):
-            project = generate_test_project()
-            project_request = CheckedRequest(Specifications().authSpec(user), Endpoint.PROJECTS.url)
-            new_project  = project_request.create(project.model_dump())
-            project.locator = None
+            project_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
+            new_project  = project_request.create(self.test_data.project.model_dump())
         with allure.step("Create buildType for project by user"):
-            buildtype = generate_test_build_type(project)
-            buildtype_request = CheckedRequest(Specifications().authSpec(user), Endpoint.BUILD_TYPES.url)
-            new_buildtype = buildtype_request.create(buildtype.model_dump())
+            buildtype_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)
+            new_buildtype = buildtype_request.create(self.test_data.buildtype.model_dump())
         with allure.step("Check buildType was created successfully with correct data"):
-            created_buildtype_request = CheckedRequest(Specifications().authSpec(user), Endpoint.BUILD_TYPES.url)
-            created_buildtype = created_buildtype_request.read(buildtype.id)
-            assert created_buildtype.json()["id"] == buildtype.id,  f"Ошибка: {created_buildtype["id"]} != {buildtype.id}"
+            created_buildtype_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)
+            created_buildtype = created_buildtype_request.read(self.test_data.buildtype.id)
+            assert created_buildtype.json()["id"] == self.test_data.buildtype.id,  f"Ошибка: {created_buildtype["id"]} != {self.test_data.buildtype.id}"
 
     @pytest.mark.negative
     @pytest.mark.crud
@@ -48,15 +45,19 @@ class TestBuildType:
     def test_user_creates_two_build_types_with_same_id(self):
         """User should not be able to create two build types with the same ID"""
         with allure.step("Create user"):
-            pass
+            user_request = CheckedRequest(self.specifications.superUserSpec(), Endpoint.USERS.url)
+            new_user = user_request.create(self.test_data.user.model_dump())
         with allure.step("Create project by user"):
-            pass
+            project_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
+            new_project = project_request.create(self.test_data.project.model_dump())
         with allure.step("Create buildType1 for project by user"):
-            pass
+            buildtype_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)
+            first_buildtype = buildtype_request.create(self.test_data.buildtype.model_dump())
         with allure.step("Create buildType2 with same id as buildType1 for project by user"):
-            pass
+            buildtype_request = UncheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)
+            second_buildtype = buildtype_request.create(self.test_data.buildtype.model_dump())
         with allure.step("Check buildType2 was not created with bad request code"):
-            pass
+            assert second_buildtype.status_code == 400, f"Ошибка: {second_buildtype.status_code}"
 
     @pytest.mark.positive
     @pytest.mark.roles

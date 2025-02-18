@@ -14,6 +14,7 @@ class Specifications:
 
     def authSpec(self, user):
         auth = user.username, user.password  # считываем пользователя и пароль из конфига
+        self.session.cookies = requests.cookies.RequestsCookieJar()
         self.session.auth = auth  # и добавляем в текущую сессию
         return self.session
 
@@ -22,6 +23,7 @@ class Specifications:
 
     def superUserSpec(self):
         auth = "", self.config.servers.dev.superusertoken
+        self.session.cookies = requests.cookies.RequestsCookieJar()
         self.session.auth = auth
         return self.session
 
