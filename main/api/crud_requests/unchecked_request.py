@@ -12,16 +12,24 @@ class UncheckedRequest(BaseCRUDRequest, Request):
 
     def read(self, id):
         response = self.session.get(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
+        print(f"Status Code: {response.status_code}")
+        print(f"Response Text: {response.text}")
         return response
 
     def update(self, id, model):
         response = self.session.put(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}", json=model)
+        print(f"Status Code: {response.status_code}")
+        print(f"Response Text: {response.text}")
         return response
 
     def delete(self, id):
         response = self.session.delete(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
+        print(f"Status Code: {response.status_code}")
+        print(f"Response Text: {response.text}")
         return response
 
     def create(self, model):
         response = self.session.post(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}", json=model)
+        print(f"Status Code: {response.status_code}")
+        print(f"Response Text: {response.text}")
         return response
