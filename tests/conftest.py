@@ -10,7 +10,7 @@ from collections import defaultdict
 
 from main.api.crud_requests.endpoints import Endpoint
 from main.api.crud_requests.unchecked_request import UncheckedRequest
-from main.api.models.api_models import Project, BuildType, Steps, Step
+from main.api.models.api_models import ParentProjectLocator, Project, BuildType
 from main.api.models.user_model import User, Roles, Role, Property, Properties
 from main.api.specs.specifications import Specifications
 
@@ -32,12 +32,22 @@ def generate_test_user(role_id="PROJECT_ADMIN", scope_type="g"):
     )
 
 def generate_test_project():
-    """Генерирует тестовый проект"""
+    """Генерирует тестовый root проект"""
     fake = Faker()
     return Project(
         id=fake.word(),
         name=fake.company(),
         locator="_Root"
+    )
+
+def generate_test_child_project(parent_project: Project):
+    """Генерирует тестовый child проект"""
+    fake = Faker()
+    parentProjectLocator = ParentProjectLocator(locator = parent_project.id)
+    return Project(
+        id=fake.word(),
+        name=fake.company(),
+        parentProjectLocator=parentProjectLocator
     )
 
 def generate_test_build_type(project: Project):
@@ -49,13 +59,14 @@ def generate_test_build_type(project: Project):
         project=project,
 
     )
-
+#TODO: переделать на использование фикстур
 class TestData():
     def __init__(self):
         self.user = generate_test_user()
         self.project = generate_test_project()
         self.project.locator = None
         self.buildtype = generate_test_build_type(self.project)
+        self.child_project = generate_test_child_project(self.project)
 
 class TestDataStorage:
     """Синглтон-класс для хранения тестовых данных"""

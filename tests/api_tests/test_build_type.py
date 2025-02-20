@@ -1,16 +1,10 @@
-import requests
 import pytest
 import allure
 
 from main.api.crud_requests.checked_request import CheckedRequest
 from main.api.crud_requests.unchecked_request import UncheckedRequest
-from main.api.models.api_models import BuildType
-from main.api.models.user_model import User
-from main.api.specs.specifications import Specifications
 from main.framework.base_api_test import BaseApiTest
-from main.framework.logger import logger
 from main.api.crud_requests.endpoints import Endpoint
-from tests.conftest import generate_test_user, generate_test_project, generate_test_build_type
 
 
 @pytest.mark.regression

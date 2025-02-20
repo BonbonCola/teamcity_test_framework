@@ -14,6 +14,7 @@ class CheckedRequest(BaseCRUDRequest, Request):
 
     def create(self, model):
         response = self.unchecked_request.create(model)
+        #TODO: переделать на использование исключений
         assert response.status_code == 200, f"Ошибка: {response.status_code}"
         TestDataStorage().add_created_entity(self.endpoint, response.json())
         return response
