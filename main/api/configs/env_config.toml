@@ -3,7 +3,7 @@
 base_url = "localhost:8111"
 username = "admin"
 password = "admin"
-superusertoken = "6823663274221854138"
+superusertoken = "8363467550029377765"
 [servers.stage]
 base_url = "10.0.0.2"
 username = "admin"

@@ -1,31 +1,39 @@
 import requests
-import logging
 from main.api.configs.config import Config
 
 class Specifications:
 
     def __init__(self):
-        self.session = requests.Session()  # создаем сессию
         self.config = Config().properties # берем конфиг
-        self.session.headers.update({
+
+    def authSpec(self, user):
+        session = requests.Session()  # создаем сессию
+        session.headers.update({
             "Content-Type": "application/json",
             "Accept": "application/json"
         })
-
-    def authSpec(self, user):
-        auth = user.username, user.password  # считываем пользователя и пароль из конфига
-        self.session.cookies = requests.cookies.RequestsCookieJar()
-        self.session.auth = auth  # и добавляем в текущую сессию
-        return self.session
+        auth = user.username, user.password  # считываем пользователя и пароль 
+        session.auth = auth  # и добавляем в текущую сессию
+        return session
 
     def unAuthSpec(self):
-        return self.session
+        session = requests.Session()
+        session.headers.update({
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        })
+        return session
 
     def superUserSpec(self):
+        session = requests.Session()
+        session.headers.update({
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        })
         auth = "", self.config.servers.dev.superusertoken
-        self.session.cookies = requests.cookies.RequestsCookieJar()
-        self.session.auth = auth
-        return self.session
+        session.cookies = requests.cookies.RequestsCookieJar()
+        session.auth = auth
+        return session
 
 
 
