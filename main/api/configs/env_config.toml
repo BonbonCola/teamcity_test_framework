@@ -1,0 +1,10 @@
+[servers]
+[servers.dev]
+base_url = "localhost:8111"
+username = "admin"
+password = "admin"
+superusertoken = "6823663274221854138"
+[servers.stage]
+base_url = "10.0.0.2"
+username = "admin"
+password = "admin"
