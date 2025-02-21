@@ -22,6 +22,7 @@ class User(BaseModel):
     properties: Properties
 
 # Возможные роли
+#TODO: сделать  enum
 role_id = [
     "PROJECT_VIEWER", "PROJECT_DEVELOPER", "PROJECT_ADMIN",
     "AGENT_MANAGER", "TOOLS_INTEGRATION", "GUEST_ROLE",

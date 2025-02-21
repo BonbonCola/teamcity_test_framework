@@ -1,14 +1,18 @@
 from pydantic import BaseModel # аналог Java Lombok + валидация полей
 from typing import Optional
 
-class ParentProjectLocator(BaseModel):
+class ParentProject(BaseModel):
+    locator: str
+
+class SourceProject(BaseModel):
     locator: str
 
 class Project(BaseModel):
     id: str
     name: str
-    locator: str = "_Root"
-    parentProjectLocator: Optional[ParentProjectLocator] = None
+    locator: Optional[str] = None
+    parentProject: Optional[ParentProject] = None
+    sourceProject: Optional[SourceProject] = None
 
 class Step(BaseModel):
     id: str
