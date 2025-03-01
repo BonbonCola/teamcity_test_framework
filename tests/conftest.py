@@ -10,7 +10,7 @@ from collections import defaultdict
 
 from main.api.crud_requests.endpoints import Endpoint
 from main.api.crud_requests.unchecked_request import UncheckedRequest
-from main.api.models.api_models import ParentProjectLocator, Project, BuildType
+from main.api.models.api_models import ParentProject, Project, BuildType, SourceProject
 from main.api.models.user_model import User, Roles, Role, Property, Properties
 from main.api.specs.specifications import Specifications
 
@@ -43,11 +43,28 @@ def generate_test_project():
 def generate_test_child_project(parent_project: Project):
     """Генерирует тестовый child проект"""
     fake = Faker()
-    parentProjectLocator = ParentProjectLocator(locator = parent_project.id)
+    parent_project_id = ParentProject(locator = parent_project.id)
     return Project(
         id=fake.word(),
         name=fake.company(),
-        parentProjectLocator=parentProjectLocator
+        parentProject=parent_project_id
+    )
+
+def generate_test_copy_project(source_project, parent_project=None):
+    """Добавляет проект копирования."""
+    fake = Faker()
+    locator = "_Root"
+
+    source_project_id = SourceProject(locator = source_project.id)
+
+    if not source_project:
+        raise ValueError("sourceProject должен быть передан")
+
+    return Project(
+        id=fake.word(),
+        name=fake.company(),
+        locator=locator if parent_project is None else parent_project.id,
+        sourceProject=source_project_id
     )
 
 def generate_test_build_type(project: Project):
@@ -64,7 +81,6 @@ class TestData():
     def __init__(self):
         self.user = generate_test_user()
         self.project = generate_test_project()
-        self.project.locator = None
         self.buildtype = generate_test_build_type(self.project)
         self.child_project = generate_test_child_project(self.project)
 
