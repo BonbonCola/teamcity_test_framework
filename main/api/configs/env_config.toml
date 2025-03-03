@@ -1,6 +1,8 @@
 [servers]
 [servers.dev]
-base_url = "localhost:8111"
+base_url = "http://localhost:8111"
+internal_base_url = "http://host.docker.internal:8111"
+selenoid_url = "http://localhost:4444/wd/hub"
 username = "admin"
 password = "admin"
 superusertoken = "1996114775490276018"
@@ -8,3 +10,6 @@ superusertoken = "1996114775490276018"
 base_url = "10.0.0.2"
 username = "admin"
 password = "admin"
+[browsers]
+chrome = "chrome"
+browser_size = "1920x1080"

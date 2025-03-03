@@ -11,26 +11,26 @@ class UncheckedRequest(BaseCRUDRequest, Request):
         super().__init__(specifications, endpoint)
 
     def read(self, id):
-        response = self.session.get(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
+        response = self.session.get(f"{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
         print(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}")
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")
         return response
 
     def update(self, id, model):
-        response = self.session.put(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}", json=model)
+        response = self.session.put(f"{Config().properties.servers.dev.internal_base_url}{self.endpoint}/id:{id}", json=model)
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")
         return response
 
     def delete(self, id):
-        response = self.session.delete(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
+        response = self.session.delete(f"{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")
         return response
 
     def create(self, model):
-        response = self.session.post(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}", json=model)
+        response = self.session.post(f"{Config().properties.servers.dev.base_url}{self.endpoint}", json=model)
         print(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}")
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")
