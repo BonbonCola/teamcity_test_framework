@@ -17,7 +17,6 @@ class LoginPage(BasePage):
     @classmethod
     def open(cls, driver):
         """Открывает страницу логина и возвращает объект LoginPage"""
-        print(f"REQUEST:{Config().properties.servers.dev.internal_base_url}/login.html")
         driver.get(f"{Config().properties.servers.dev.internal_base_url}/login.html")
         return cls(driver)
 

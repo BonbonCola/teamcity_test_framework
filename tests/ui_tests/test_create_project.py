@@ -3,8 +3,10 @@ import allure
 
 from main.api.crud_requests.checked_request import CheckedRequest
 from main.api.crud_requests.endpoints import Endpoint
+from main.api.models.api_models import Project
 from main.framework.base_ui_test import BaseUiTest
 from main.ui.login_page import LoginPage
+from main.ui.project_create_page import ProjectCreatePage
 
 
 class TestCreateProject(BaseUiTest):
@@ -23,13 +25,13 @@ class TestCreateProject(BaseUiTest):
             login_page.login(self.test_data.user)
         #взаимодействие с UI
         with allure.step("Open `Create Project Page` (http://localhost:8111/admin/createObjectMenu.html)"):
-            pass
+            create_project_page  = ProjectCreatePage.open(driver = self.driver, project_id="_Root")
         with allure.step("Send all project parameters (repository URL)"):
-            pass
+            create_project_page.create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
             pass
         with allure.step("Fix Project Name and Build Type name values"):
-            pass
+            create_project_page.setup_project(self.test_data.project.name, self.test_data.buildtype.name)
         with allure.step("Click `Proceed`"):
             pass
         #проверка состояния API
