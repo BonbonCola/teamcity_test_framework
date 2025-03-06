@@ -10,8 +10,8 @@ class UncheckedRequest(BaseCRUDRequest, Request):
     def __init__(self, specifications: Specifications, endpoint):
         super().__init__(specifications, endpoint)
 
-    def read(self, id):
-        response = self.session.get(f"{Config().properties.servers.dev.base_url}{self.endpoint}/id:{id}")
+    def read(self, locator):
+        response = self.session.get(f"{Config().properties.servers.dev.base_url}{self.endpoint}/{locator}")
         print(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}")
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")

@@ -7,6 +7,7 @@ from main.api.models.api_models import Project
 from main.framework.base_ui_test import BaseUiTest
 from main.ui.login_page import LoginPage
 from main.ui.project_create_page import ProjectCreatePage
+from main.ui.project_page import ProjectPage
 
 
 class TestCreateProject(BaseUiTest):
@@ -37,11 +38,14 @@ class TestCreateProject(BaseUiTest):
         #проверка состояния API
         #(корректность отправки данных с UI на API)
         with allure.step("Check that all entities (project, build type) was successfully created with correct data on API level"):
-            pass
+            project_request = CheckedRequest(self.specifications.superUserSpec(), Endpoint.PROJECTS.url)
+            created_project = project_request.read(f'name:{self.test_data.project.name}')
+            assert created_project.json()["name"] == self.test_data.project.name
         #проверка состояния UI
         #(корректность считывания данных и отображение данных на UI)
         with allure.step("Check that project is visible on Projects Page (http://localhost:8111/favorite/projects)"):
-            pass
+            project_page = ProjectPage.open(driver=self.driver, project_id=created_project.json()["id"])
+            assert project_page.get_title_project_name() == self.test_data.project.name
 
     def test_user_creates_project_without_name(self):
         with allure.step("Login as user"):

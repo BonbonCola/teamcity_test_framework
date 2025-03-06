@@ -36,7 +36,7 @@ def generate_test_project():
     fake = Faker()
     return Project(
         id=fake.word(),
-        name=fake.company(),
+        name=fake.word(),
         locator="_Root"
     )
 
@@ -46,7 +46,7 @@ def generate_test_child_project(parent_project: Project):
     parent_project_id = ParentProject(locator = parent_project.id)
     return Project(
         id=fake.word(),
-        name=fake.company(),
+        name=fake.word(),
         parentProject=parent_project_id
     )
 
@@ -62,7 +62,7 @@ def generate_test_copy_project(source_project, parent_project=None):
 
     return Project(
         id=fake.word(),
-        name=fake.company(),
+        name=fake.word(),
         locator=locator if parent_project is None else parent_project.id,
         sourceProject=source_project_id
     )

@@ -8,7 +8,7 @@ class BasePage:
 
     def find(self, locator):
         """Обертка для поиска элемента"""
-        return WebDriverWait(self.driver, 10).until( #ждем 10 сек, пока элемент не появится
+        return WebDriverWait(self.driver, 30).until( #ждем 30 сек, пока элемент не появится
             EC.visibility_of_element_located(locator) #элемент виден, находим его и возвращаем
         )
 

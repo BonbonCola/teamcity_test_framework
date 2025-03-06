@@ -27,7 +27,7 @@ class TestProject(BaseApiTest):
             new_project = project_request.create(self.test_data.project.model_dump())
         with allure.step("Check project was created successfully with correct data"):
             created_project_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
-            created_project = created_project_request.read(self.test_data.project.id)
+            created_project = created_project_request.read(f'id:{self.test_data.buildtype.id}')
             assert created_project.json()["id"] == self.test_data.project.id,  f"Ошибка: {created_project["id"]} != {self.test_data.project.id}"
 
     @pytest.mark.positive
@@ -48,7 +48,7 @@ class TestProject(BaseApiTest):
             child_project = child_project_request.create(self.test_data.child_project.model_dump())
         with allure.step("Check child project was created successfully with correct data"):
             created_child_project_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
-            created_child_project = created_child_project_request.read(self.test_data.child_project.id)
+            created_child_project = created_child_project_request.read(f'id:{self.test_data.child_project.id}')
             assert created_child_project.json()["parentProjectId"] == self.test_data.project.id , f"Ошибка: {created_child_project["parentProjectId"]} != {self.test_data.project.id}"
     
     @pytest.mark.negative
@@ -195,5 +195,5 @@ class TestProject(BaseApiTest):
             project_copy_request.create(project_copy.model_dump())
         with allure.step("Check project was copied successfully with correct data"):
             project_copy_created_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
-            project_copy_created = project_copy_created_request.read(project_copy.id)
+            project_copy_created = project_copy_created_request.read(f'id:{project_copy.id}')
             assert project_copy_created.json()["id"] == project_copy.id,  f"Ошибка: {project_copy_created["id"]} != {self.test_data.project.id}"
