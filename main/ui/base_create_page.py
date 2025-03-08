@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-from main.api.configs.config import Config
 from main.ui.base_page import BasePage
 
 

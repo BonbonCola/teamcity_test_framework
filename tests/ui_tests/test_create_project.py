@@ -8,13 +8,10 @@ from main.framework.base_ui_test import BaseUiTest
 from main.ui.login_page import LoginPage
 from main.ui.project_create_page import ProjectCreatePage
 from main.ui.project_page import ProjectPage
+from main.ui.projects_page import ProjectsPage
 
 
 class TestCreateProject(BaseUiTest):
-
-    def test_simple_test(self):
-        self.driver.get("https://www.google.com")
-        assert "Google" in self.driver.title
 
     def test_user_creates_project(self):
         """User should be able to create project"""
@@ -40,12 +37,19 @@ class TestCreateProject(BaseUiTest):
         with allure.step("Check that all entities (project, build type) was successfully created with correct data on API level"):
             project_request = CheckedRequest(self.specifications.superUserSpec(), Endpoint.PROJECTS.url)
             created_project = project_request.read(f'name:{self.test_data.project.name}')
-            assert created_project.json()["name"] == self.test_data.project.name
+            assert created_project.json()["name"] == self.test_data.project.name, f"Ошибка: нет {self.test_data.project.name}"
         #проверка состояния UI
         #(корректность считывания данных и отображение данных на UI)
-        with allure.step("Check that project is visible on Projects Page (http://localhost:8111/favorite/projects)"):
+        with allure.step("Check that project is visible on Project Page (http://localhost:8111/project/{project_id})"):
             project_page = ProjectPage.open(driver=self.driver, project_id=created_project.json()["id"])
-            assert project_page.get_title_project_name() == self.test_data.project.name
+            assert project_page.get_title_project_name() == self.test_data.project.name, f"Ошибка: нет {self.test_data.project.name}"
+        with allure.step("Check that project is visible on Projects Page (http://localhost:8111/favorite/projects)"):
+            projects_page = ProjectsPage.open(driver=self.driver)
+            projects = projects_page.get_projects()
+            projects_names = []
+            for p in projects:
+                projects_names.append(p.get_name())
+            assert self.test_data.project.name in projects_names, f"Ошибка: {self.test_data.project.name} нет в списке"
 
     def test_user_creates_project_without_name(self):
         with allure.step("Login as user"):

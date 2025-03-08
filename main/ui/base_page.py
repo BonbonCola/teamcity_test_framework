@@ -12,6 +12,12 @@ class BasePage:
             EC.visibility_of_element_located(locator) #элемент виден, находим его и возвращаем
         )
 
+    def find_all(self, locator):
+        """Ожидает и возвращает список всех видимых элементов."""
+        return WebDriverWait(self.driver, 30).until(
+            EC.presence_of_all_elements_located(locator)
+        )
+
     def click(self, locator):
         """Обертка для клика по элементу"""
         self.find(locator).click()
