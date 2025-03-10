@@ -28,7 +28,7 @@ class TestBuildType(BaseApiTest):
             new_buildtype = buildtype_request.create(self.test_data.buildtype.model_dump())
         with allure.step("Check buildType was created successfully with correct data"):
             created_buildtype_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)
-            created_buildtype = created_buildtype_request.read(self.test_data.buildtype.id)
+            created_buildtype = created_buildtype_request.read(f'id:{self.test_data.buildtype.id}')
             assert created_buildtype.json()["id"] == self.test_data.buildtype.id,  f"Ошибка: {created_buildtype["id"]} != {self.test_data.buildtype.id}"
 
     @pytest.mark.negative
