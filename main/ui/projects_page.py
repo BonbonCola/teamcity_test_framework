@@ -23,3 +23,12 @@ class ProjectsPage(BasePage):
             project = ProjectElement(e)
             projects.append(project)
         return projects
+
+    def get_builds_by_project_name(self, project_name):
+        elements = self.get_projects()
+        for e in elements:
+            if e.get_name() == project_name:
+                e.open_builds_list()
+                return e.get_build_names()
+
+

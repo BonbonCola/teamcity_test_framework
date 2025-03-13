@@ -12,7 +12,7 @@ class UncheckedRequest(BaseCRUDRequest, Request):
 
     def read(self, locator):
         response = self.session.get(f"{Config().properties.servers.dev.base_url}{self.endpoint}/{locator}")
-        print(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}")
+        print(f"http://{Config().properties.servers.dev.base_url}{self.endpoint}/{locator}")
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")
         return response
