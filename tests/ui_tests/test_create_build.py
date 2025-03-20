@@ -1,8 +1,8 @@
 import allure
 
-from main.api.crud_requests.checked_request import CheckedRequest
-from main.api.crud_requests.endpoints import Endpoint
-from main.api.crud_requests.unchecked_request import UncheckedRequest
+from main.api.requests.checked_crud_request import CheckedRequest
+from main.api.requests.endpoints import Endpoint
+from main.api.requests.unchecked_crud_request import UncheckedRequest
 from main.framework.base_ui_test import BaseUiTest
 from main.ui.build_create_page import BuildCreatePage
 from main.ui.build_page import BuildPage

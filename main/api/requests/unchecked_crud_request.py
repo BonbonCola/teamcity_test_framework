@@ -1,7 +1,5 @@
-from tokenize import endpats
-
 from main.api.configs.config import Config
-from main.api.crud_requests.base_crud_request import BaseCRUDRequest, Request
+from main.api.requests.base_request import BaseCRUDRequest, Request
 from main.api.specs.specifications import Specifications
 
 

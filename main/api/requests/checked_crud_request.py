@@ -1,5 +1,5 @@
-from main.api.crud_requests.base_crud_request import BaseCRUDRequest, Request
-from main.api.crud_requests.unchecked_request import UncheckedRequest
+from main.api.requests.base_request import BaseCRUDRequest, Request
+from main.api.requests.unchecked_crud_request import UncheckedRequest
 from typing import Type
 from pydantic import BaseModel
 

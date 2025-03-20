@@ -8,8 +8,8 @@ from pydantic import BaseModel
 from typing import List
 from collections import defaultdict
 
-from main.api.crud_requests.endpoints import Endpoint
-from main.api.crud_requests.unchecked_request import UncheckedRequest
+from main.api.requests.endpoints import Endpoint
+from main.api.requests.unchecked_crud_request import UncheckedRequest
 from main.api.models.api_models import ParentProject, Project, BuildType, SourceProject
 from main.api.models.user_model import User, Roles, Role, Property, Properties
 from main.api.specs.specifications import Specifications

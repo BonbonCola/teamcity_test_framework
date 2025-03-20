@@ -1,10 +1,10 @@
 import pytest
 import allure
 
-from main.api.crud_requests.checked_request import CheckedRequest
-from main.api.crud_requests.unchecked_request import UncheckedRequest
+from main.api.requests.checked_crud_request import CheckedRequest
+from main.api.requests.unchecked_crud_request import UncheckedRequest
 from main.framework.base_api_test import BaseApiTest
-from main.api.crud_requests.endpoints import Endpoint
+from main.api.requests.endpoints import Endpoint
 
 
 @pytest.mark.regression

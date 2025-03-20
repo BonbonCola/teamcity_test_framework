@@ -5,7 +5,7 @@ internal_base_url = "http://host.docker.internal:8111"
 selenoid_url = "http://localhost:4444/wd/hub"
 username = "admin"
 password = "admin"
-superusertoken = "1996114775490276018"
+superusertoken = "1805095862762988855"
 [servers.stage]
 base_url = "10.0.0.2"
 username = "admin"
