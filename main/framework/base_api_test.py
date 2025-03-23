@@ -4,7 +4,6 @@ from main.api.models.server_auth_settings import ServerAuthSettings
 from main.api.requests.endpoints import Endpoint
 from main.api.requests.server_auth_settings_request import ServerAuthSettingRequest
 from main.api.specs.specifications import Specifications
-from main.api.models.user_model import User
 from main.framework.base_test import BaseTest
 
 

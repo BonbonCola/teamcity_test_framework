@@ -1,9 +1,7 @@
-import pytest
 import allure
 
 from main.api.requests.checked_crud_request import CheckedRequest
 from main.api.requests.endpoints import Endpoint
-from main.api.models.api_models import Project
 from main.framework.base_ui_test import BaseUiTest
 from main.ui.login_page import LoginPage
 from main.ui.project_create_page import ProjectCreatePage
