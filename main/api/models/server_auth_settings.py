@@ -1,9 +1,29 @@
 from pydantic import BaseModel
+from typing import List, Optional
+
+
+class Property(BaseModel):
+    name: str
+    value: str
+
+
+class Properties(BaseModel):
+    property: List[Property]
 
 
 class Module(BaseModel):
-    name: str = "Default"
+    name: str
+    properties: Optional[Properties] = None
+
+
+class ModulesWrapper(BaseModel):
+    module: List[Module]
+
 
 class ServerAuthSettings(BaseModel):
+    allowGuest: bool
+    guestUsername: str
+    collapseLoginForm: bool
     perProjectPermissions: bool
-    module: list[Module]
+    emailVerification: bool
+    modules: ModulesWrapper

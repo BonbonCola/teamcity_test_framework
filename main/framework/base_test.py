@@ -8,5 +8,4 @@ class BaseTest:
 
     def teardown_method(self):
         """Удаление созданных тестовых данных после тестов"""
-        self.counter = 1
         TestDataStorage().delete_created_entities()

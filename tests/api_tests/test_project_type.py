@@ -27,7 +27,7 @@ class TestProject(BaseApiTest):
             new_project = project_request.create(self.test_data.project.model_dump())
         with allure.step("Check project was created successfully with correct data"):
             created_project_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
-            created_project = created_project_request.read(f'id:{self.test_data.buildtype.id}')
+            created_project = created_project_request.read(f'id:{self.test_data.project.id}')
             assert created_project.json()["id"] == self.test_data.project.id,  f"Ошибка: {created_project["id"]} != {self.test_data.project.id}"
 
     @pytest.mark.positive
