@@ -1,11 +1,7 @@
 import sys
 import os
-import random
 
-import pytest
 from faker import Faker
-from pydantic import BaseModel
-from typing import List
 from collections import defaultdict
 
 from main.api.requests.endpoints import Endpoint

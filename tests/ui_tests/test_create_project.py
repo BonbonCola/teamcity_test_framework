@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from main.api.requests.checked_crud_request import CheckedRequest
 from main.api.requests.endpoints import Endpoint
@@ -8,7 +9,7 @@ from main.ui.project_create_page import ProjectCreatePage
 from main.ui.project_page import ProjectPage
 from main.ui.projects_page import ProjectsPage
 
-
+@pytest.mark.regression
 class TestCreateProject(BaseUiTest):
 
     def test_user_creates_project(self):

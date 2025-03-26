@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from main.api.requests.checked_crud_request import CheckedRequest
 from main.api.requests.endpoints import Endpoint
@@ -7,9 +8,8 @@ from main.framework.base_ui_test import BaseUiTest
 from main.ui.build_create_page import BuildCreatePage
 from main.ui.build_page import BuildPage
 from main.ui.login_page import LoginPage
-from main.ui.projects_page import ProjectsPage
 
-
+@pytest.mark.regression
 class TestCreateBuild(BaseUiTest):
 
     def test_user_creates_build(self):
@@ -65,7 +65,7 @@ class TestCreateBuild(BaseUiTest):
         with allure.step("Click `Proceed`"):
             pass
         with allure.step("Check that build  was not created and error was shown"):
-            assert "Build configuration name must not be empty" in create_build_page.get_error_build_type_text(), f'Текст ошибки не совпадает'
+            assert "Build configuration name must not be empty" in create_build_page.get_error_build_type_text(), 'Текст ошибки не совпадает'
         with allure.step(
             "Check that build  was not created on API level"):
             build_request = UncheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)
