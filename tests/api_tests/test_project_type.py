@@ -1,3 +1,5 @@
+from copy import copy
+
 import pytest
 import allure
 
@@ -65,8 +67,8 @@ class TestProject(BaseApiTest):
             project_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
             new_project = project_request.create(self.test_data.project.model_dump())
         with allure.step("Create project 2 by user with same id"):
-            name = self.test_data.project.project_name
-            self.test_data.project.project_name.replace(name, "another_name")
+            name = copy(self.test_data.project.name)
+            self.test_data.project.name.replace(name, "another_name")
             second_project_request = UncheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
             second_project = second_project_request.create(self.test_data.project.model_dump())
         with allure.step("Check project 2 was not created with bad request code"):
@@ -125,7 +127,7 @@ class TestProject(BaseApiTest):
             print(f'{self.test_data.project.model_dump(exclude={"id"})}')
             project = project_request.create(self.test_data.project.model_dump(exclude={"id"}))
         with allure.step("Check project was created with id == name"):
-            assert project.json()["id"] == self.test_data.project.project_name.replace(" ", "").replace("-", ""), f"Ошибка: {project_request.status_code}"
+            assert project.json()["id"].lower() == self.test_data.project.name.replace(" ", "").replace("-", ""), f"Ошибка: {project_request.status_code}"
 
     @pytest.mark.negative
     @pytest.mark.crud

@@ -25,6 +25,8 @@ class TestBuildType(BaseApiTest):
             new_project  = project_request.create(self.test_data.project.model_dump())
         with allure.step("Create buildType for project by user"):
             buildtype_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)
+            print(f'ОТПРАВЛЯЕМ:')
+            print(self.test_data.buildtype.model_dump())
             new_buildtype = buildtype_request.create(self.test_data.buildtype.model_dump())
         with allure.step("Check buildType was created successfully with correct data"):
             created_buildtype_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)

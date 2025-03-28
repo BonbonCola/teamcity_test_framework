@@ -66,6 +66,7 @@ def generate_test_copy_project(source_project, parent_project=None):
 def generate_test_build_type(project: Project):
     """Генерирует тестовый BuildType, привязанный к переданному проекту"""
     fake = Faker()
+    del(project.locator)
     return BuildType(
         id=fake.word(),
         name=fake.word(),
@@ -77,6 +78,7 @@ class TestData():
     def __init__(self):
         self.user = generate_test_user()
         self.project = generate_test_project()
+        self.project.locator
         self.buildtype = generate_test_build_type(self.project)
         self.child_project = generate_test_child_project(self.project)
 

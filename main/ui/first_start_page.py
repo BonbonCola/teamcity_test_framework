@@ -34,3 +34,5 @@ class FirstStartPage(BasePage):
         self.find(self.checkbox_agree)
         self.click(self.checkbox_agree)
         self.click(self.button_continue)
+
+
