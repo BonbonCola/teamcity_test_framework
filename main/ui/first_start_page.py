@@ -23,6 +23,7 @@ class FirstStartPage(BasePage):
         return cls(driver)
 
     def setup_first_start(self):
+        self.find(self.button_proceed, timeout=180)
         self.click(self.button_proceed)
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
