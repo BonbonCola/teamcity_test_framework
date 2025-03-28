@@ -1,0 +1,8 @@
+name: Teamcity Setup
+
+runs:
+  using: composite
+  steps:
+    - name: Setup
+
+  #получаем ip, чтобы настроить в докере все, как делали вручную
