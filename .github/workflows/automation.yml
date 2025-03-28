@@ -25,7 +25,7 @@ jobs:
           pip install ruff
 
       - name: Run ruff linter
-        run: ruff ./main/${{ inputs.package }}
+        run: ruff check ./main/${{ inputs.package }}
 
   run-tests:
     needs: lint
