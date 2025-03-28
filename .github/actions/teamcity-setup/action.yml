@@ -43,7 +43,7 @@ runs:
       shell: bash
       run: |
         sleep 30 
-        pytest tests/ui_tests/test_setup_server.py::TestSetupServer::test_setup_teamcity_server
+        PYTHONPATH=. pytest tests/ui_tests/test_setup_server.py::TestSetupServer::test_setup_teamcity_server
 
     - name: Extract SUPER_USER_TOKEN  # Получаем токен суперпользователя из логов TeamCity и кладем в переменную гитхаб экшнс
       shell: bash
