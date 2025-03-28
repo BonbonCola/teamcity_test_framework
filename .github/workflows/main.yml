@@ -16,11 +16,11 @@ jobs:
     needs: [ backend, frontend ]
     uses: ./.github/workflows/automation.yml
     with:
-      package: api_tests
+      package: api
 
   # Прогоняются UI тесты
   automation-ui:
     needs: [ backend, frontend ]
     uses: ./.github/workflows/automation.yml
     with:
-      package: ui_tests
+      package: ui

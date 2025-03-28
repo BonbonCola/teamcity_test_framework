@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       package:
-        description: api_tests | ui_tests
+        description: api | ui
         required: true
         type: string
 
@@ -47,6 +47,13 @@ jobs:
       - name: TeamCity Setup
         uses: ./.github/actions/teamcity-setup
 
+      - name: Set test path env var
+        run: |
+          if [ "${{ inputs.package }}" = "api" ]; then
+            echo "TEST_PATH=tests/api_tests" >> $GITHUB_ENV
+          else [ "${{ inputs.package }}" = "ui" ]; then
+            echo "TEST_PATH=tests/ui_tests" >> $GITHUB_ENV
+
       - name: Run pytest
         continue-on-error: true
-        run: PYTHONPATH=. pytest -m regression tests/${{ inputs.package }}
+        run: PYTHONPATH=. pytest -m regression $TEST_PATH
