@@ -13,35 +13,31 @@ runs:
       shell: bash
       run: sudo apt-get update && sudo apt-get install -y net-tools
 
-    - name: Set HOST environment variable  # Получаем внешний IP текущей машины, чтобы обращаться к контейнерам извне (например, из браузера в Selenoid)
+    - name: Set HOST environment variable  # Получаем внешний IP текущей машины, чтобы обращаться к контейнерам извне (например, из браузера в Selenoid) и кладем в переменную гитхаб экшнс
       shell: bash
       run: |
         echo "HOST=$(ifconfig | grep -Eo 'inet [0-9.]+' | grep -v '127.0.0.1' | awk '{ print $2 }' | head -n1)" >> $GITHUB_ENV
 
+    - name: Copy browsers config to working dir
+      shell: bash
+      run: cp selenoid/config/browsers.json ./browsers.json
+
     - name: Pull Selenoid browsers  # Из файла selenoid/config/browsers.json достаём имена Docker-образов браузеров и скачиваем их
       shell: bash
       run: |
-        for browser in $(awk -F'"' '/"image": "/{print $4}' selenoid/config/browsers.json); do
+        for browser in $(awk -F'"' '/"image": "/{print $4}' browsers.json); do
           docker pull $browser
         done
 
     - name: Run Selenoid  # Запускаем контейнер с Selenoid — это основной сервер, который управляет браузерами
       shell: bash
       run: |
-        docker run -d --name selenoid \
-          -v /var/run/docker.sock:/var/run/docker.sock \ 
-          -v $(pwd)/selenoid/config/:/etc/selenoid/:ro \    
-          -p 4444:4444 \                                             
-          aerokube/selenoid:latest-release                         
+        docker run -d --name selenoid -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd)/selenoid/config/:/etc/selenoid/:ro -p 4444:4444 aerokube/selenoid:latest-release                         
 
-    - name: Run TeamCity Server  # Запускаем TeamCity в контейнере
+    - name: Run TeamCity Server  # Запускаем TeamCity в контейнере, Флаг -d запускает контейнер в фоновом режиме, если мы этого не сделаем, мы никогда не перейдем к следующему степу
       shell: bash
       run: |
-        docker run -u 0 -d --name teamcity-server \                   
-          -v $(pwd)/tmp/teamcity_server/datadir:/data/teamcity_server/datadir \  
-          -v $(pwd)/tmp/teamcity_server/logs:/opt/teamcity/logs \  
-          -p 8111:8111 \                                          
-          jetbrains/teamcity-server:2023.11.1               
+        docker run -u 0 -d --name teamcity-server -v $(pwd)/tmp/teamcity_server/datadir:/data/teamcity_server/datadir -v $(pwd)/tmp/teamcity_server/logs:/opt/teamcity/logs -p 8111:8111 jetbrains/teamcity-server:2023.11.1               
 
     - name: Setup TeamCity Server (via pytest)  # Настраиваем TeamCity автоматически с помощью теста
       shell: bash
@@ -49,7 +45,7 @@ runs:
         sleep 30 
         pytest tests/ui_tests/test_setup_server.py::TestSetupServer::test_setup_teamcity_server
 
-    - name: Extract SUPER_USER_TOKEN  # Получаем токен суперпользователя из логов TeamCity
+    - name: Extract SUPER_USER_TOKEN  # Получаем токен суперпользователя из логов TeamCity и кладем в переменную гитхаб экшнс
       shell: bash
       run: |
         echo "SUPER_USER_TOKEN=$(docker logs teamcity-server | grep 'Super user authentication token' | tail -n 1 | awk '{print \$6}')" >> $GITHUB_ENV
