@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       package:
-        description: api | ui
+        description: api_tests | ui_tests
         required: true
         type: string
 
@@ -49,4 +49,4 @@ jobs:
 
       - name: Run pytest
         continue-on-error: true
-        run: PYTHONPATH=. pytest tests/${{ inputs.package }}
+        run: PYTHONPATH=. pytest -m regression tests/${{ inputs.package }}
