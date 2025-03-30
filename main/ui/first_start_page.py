@@ -29,12 +29,12 @@ class FirstStartPage(BasePage):
 
     def setup_first_start(self):
         time.sleep(10)
-        self.find(self.button_proceed, timeout=30)
+        #self.find(self.button_proceed, timeout=30)
         print("Page source:")
         print(self.driver.page_source[:10000])
         self.driver.save_screenshot("teamcity_fail.png")
-        self.click(self.button_proceed)
-        #self.driver.execute_script("BS.Maintenance.FirstStart.submit(false);")
+        #self.click(self.button_proceed)
+        self.driver.execute_script("BS.Maintenance.FirstStart.submit(false);")
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
         self.find(self.agreement)
