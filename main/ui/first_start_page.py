@@ -5,7 +5,7 @@ from main.api.configs.config import Config
 from selenium.webdriver.common.by import By
 
 from main.ui.base_page import BasePage
-
+import time
 from selenium.webdriver.common.keys import Keys
 
 
@@ -26,16 +26,16 @@ class FirstStartPage(BasePage):
         return cls(driver)
 
     def setup_first_start(self):
-        print(f"ПЫТАЕМСЯ НАЙТИ КНОПКУ")
+        time.sleep(10)
+        #print(f"ПЫТАЕМСЯ НАЙТИ КНОПКУ")
         #self.find(self.button_proceed, timeout=380)
         print("Current URL:", self.driver.current_url)
         #self.driver.execute_script("document.getElementById('proceedButton').removeAttribute('disabled')")
-        #self.click(self.button_proceed)
-        self.driver.refresh()
         print("Page source:")
         print(self.driver.page_source[:10000])
         self.driver.save_screenshot("teamcity_fail.png")
-        self.driver.execute_script("BS.Maintenance.FirstStart.submit(false);")
+        self.click(self.button_proceed)
+        #self.driver.execute_script("BS.Maintenance.FirstStart.submit(false);")
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
         self.find(self.agreement)
