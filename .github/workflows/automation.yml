@@ -47,6 +47,13 @@ jobs:
       - name: TeamCity Setup
         uses: ./.github/actions/teamcity-setup
 
+      - name: Upload failure screenshot
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: teamcity-fail-screenshot
+          path: teamcity_fail.png
+
       - name: Set test path env var
         run: |
           if [ "${{ inputs.package }}" = "api" ]; then

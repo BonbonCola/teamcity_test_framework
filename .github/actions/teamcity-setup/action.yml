@@ -58,13 +58,6 @@ runs:
         done
         echo "✅ TeamCity доступен! Запускаем тест"
         PYTHONPATH=. pytest tests/ui_tests/test_setup_server.py::TestSetupServer::test_setup_teamcity_server         
-        
-    - name: Upload failure screenshot
-      if: failure()
-      uses: actions/upload-artifact@v3
-      with:
-        name: teamcity-fail-screenshot
-        path: teamcity_fail.png
 
     - name: Extract SUPER_USER_TOKEN  # Получаем токен суперпользователя из логов TeamCity и кладем в переменную гитхаб экшнс
       shell: bash
