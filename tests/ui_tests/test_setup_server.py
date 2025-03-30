@@ -10,6 +10,7 @@ class TestSetupServer(BaseUiTest):
 
     def test_setup_teamcity_server(self):
         setup_page = FirstStartPage.open(self.driver)
+        print(f"ТИМСИТИ ЗАПУСТИЛСЯ")
         setup_page.setup_first_start()
         login_page = LoginPage.open(self.driver)
         login_page.create_admin_user()

@@ -24,6 +24,7 @@ class FirstStartPage(BasePage):
 
     def setup_first_start(self):
         #self.find(self.button_proceed, timeout=180)
+        print(f"ПЫТАЕМСЯ НАЙТИ КНОПКУ")
         self.click(self.button_proceed)
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
