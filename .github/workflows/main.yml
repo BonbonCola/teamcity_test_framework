@@ -11,10 +11,11 @@ defaults:
     shell: bash
 
 jobs:
-  prepare-actions:
+  init:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/upload-artifact@v3
+      - name: Allow artifact usage
+        uses: actions/upload-artifact@v3
         with:
           name: dummy
           path: README.md
