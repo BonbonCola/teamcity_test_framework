@@ -32,9 +32,6 @@ class FirstStartPage(BasePage):
         #self.driver.execute_script("document.getElementById('proceedButton').removeAttribute('disabled')")
         #self.click(self.button_proceed)
         self.driver.refresh()
-        WebDriverWait(self.driver, 60).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "submitButton"))  # или любой другой JS-индикатор
-        )
         print("Page source:")
         print(self.driver.page_source[:10000])
         self.driver.save_screenshot("teamcity_fail.png")
