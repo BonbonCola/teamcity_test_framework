@@ -35,9 +35,10 @@ class FirstStartPage(BasePage):
         self.click(self.button_proceed)
         #self.driver.execute_script("BS.Maintenance.FirstStart.submit(false);")
         time.sleep(30)
-        self.driver.save_screenshot("teamcity_fail.png")
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
+        time.sleep(130)
+        self.driver.save_screenshot("teamcity_fail.png")
         self.find(self.agreement)
 
         agreement = self.find(self.scrollable_div)
