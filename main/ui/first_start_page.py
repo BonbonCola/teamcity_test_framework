@@ -1,3 +1,6 @@
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from main.api.configs.config import Config
 from selenium.webdriver.common.by import By
 
@@ -25,12 +28,16 @@ class FirstStartPage(BasePage):
     def setup_first_start(self):
         print(f"ПЫТАЕМСЯ НАЙТИ КНОПКУ")
         #self.find(self.button_proceed, timeout=380)
-        self.driver.save_screenshot("teamcity_fail.png")
         print("Current URL:", self.driver.current_url)
-        print("Page source:")
-        print(self.driver.page_source[:10000])
         #self.driver.execute_script("document.getElementById('proceedButton').removeAttribute('disabled')")
         #self.click(self.button_proceed)
+        self.driver.refresh()
+        WebDriverWait(self.driver, 60).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "submitButton"))  # или любой другой JS-индикатор
+        )
+        print("Page source:")
+        print(self.driver.page_source[:10000])
+        self.driver.save_screenshot("teamcity_fail.png")
         self.driver.execute_script("BS.Maintenance.FirstStart.submit(false);")
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
