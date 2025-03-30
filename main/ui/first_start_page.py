@@ -25,6 +25,10 @@ class FirstStartPage(BasePage):
     def setup_first_start(self):
         #self.find(self.button_proceed, timeout=180)
         print(f"ПЫТАЕМСЯ НАЙТИ КНОПКУ")
+        self.driver.save_screenshot("teamcity_fail.png")
+        print("Current URL:", self.driver.current_url)
+        print("Page source:")
+        print(self.driver.page_source[:1000])
         self.click(self.button_proceed)
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)

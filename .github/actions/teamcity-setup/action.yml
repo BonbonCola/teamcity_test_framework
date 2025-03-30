@@ -48,11 +48,23 @@ runs:
         sed -i.bak "s|selenoid_url = .*|selenoid_url = \"http://$HOST:4444/wd/hub\"|" main/api/configs/env_config.toml
         sed -i.bak "s|superusertoken = .*|superusertoken = \"$SUPER_USER_TOKEN\"|" main/api/configs/env_config.toml
 
-    - name: Setup TeamCity Server (via pytest)  # Настраиваем TeamCity автоматически с помощью теста
+    - name: Setup TeamCity Server (via pytest) # Настраиваем TeamCity автоматически с помощью теста
       shell: bash
       run: |
-        sleep 400 
-        PYTHONPATH=. pytest tests/ui_tests/test_setup_server.py::TestSetupServer::test_setup_teamcity_server
+        echo "🩺 Ожидаем, пока TeamCity поднимется..."
+        until curl -s "http://$HOST:8111" | grep -q "TeamCity"; do
+          echo "⏳ Ждём TeamCity на $HOST:8111..."
+          sleep 10
+        done
+        echo "✅ TeamCity доступен! Запускаем тест"
+        PYTHONPATH=. pytest tests/ui_tests/test_setup_server.py::TestSetupServer::test_setup_teamcity_server         
+        
+    - name: Upload failure screenshot
+      if: failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: teamcity-fail-screenshot
+        path: teamcity_fail.png
 
     - name: Extract SUPER_USER_TOKEN  # Получаем токен суперпользователя из логов TeamCity и кладем в переменную гитхаб экшнс
       shell: bash
