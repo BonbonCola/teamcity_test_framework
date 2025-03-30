@@ -23,8 +23,8 @@ class FirstStartPage(BasePage):
         return cls(driver)
 
     def setup_first_start(self):
-        #self.find(self.button_proceed, timeout=180)
         print(f"ПЫТАЕМСЯ НАЙТИ КНОПКУ")
+        self.find(self.button_proceed, timeout=380)
         self.driver.save_screenshot("teamcity_fail.png")
         print("Current URL:", self.driver.current_url)
         print("Page source:")
