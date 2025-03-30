@@ -19,18 +19,19 @@ class FirstStartPage(BasePage):
 
     @classmethod
     def open(cls, driver):
-        driver.get(f"{Config().properties.servers.dev.internal_base_url}")
+        driver.get(f"{Config().properties.servers.dev.internal_base_url}/mnt")
         return cls(driver)
 
     def setup_first_start(self):
         print(f"ПЫТАЕМСЯ НАЙТИ КНОПКУ")
-        self.find(self.button_proceed, timeout=380)
+        #self.find(self.button_proceed, timeout=380)
         self.driver.save_screenshot("teamcity_fail.png")
         print("Current URL:", self.driver.current_url)
         print("Page source:")
         print(self.driver.page_source[:10000])
-        self.driver.execute_script("document.getElementById('proceedButton').removeAttribute('disabled')")
-        self.click(self.button_proceed)
+        #self.driver.execute_script("document.getElementById('proceedButton').removeAttribute('disabled')")
+        #self.click(self.button_proceed)
+        self.driver.execute_script("BS.Maintenance.FirstStart.submit(false);")
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
         self.find(self.agreement)
