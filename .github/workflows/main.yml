@@ -2,6 +2,14 @@ name: TeamCity deployment
 
 on: push
 
+permissions:
+  contents: read
+  actions: read
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
   # Собирается бекенд и деплоится на стейдж/review app
   backend:
