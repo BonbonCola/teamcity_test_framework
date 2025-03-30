@@ -29,7 +29,7 @@ class FirstStartPage(BasePage):
         print("Current URL:", self.driver.current_url)
         print("Page source:")
         print(self.driver.page_source[:10000])
-        self.driver.execute_script("document.querySelector('.proceedButton').removeAttribute('disabled')")
+        self.driver.execute_script("document.getElementById('proceedButton').removeAttribute('disabled')")
         self.click(self.button_proceed, self.long_timout)
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
