@@ -34,10 +34,10 @@ class FirstStartPage(BasePage):
         print(self.driver.page_source[:10000])
         self.click(self.button_proceed)
         #self.driver.execute_script("BS.Maintenance.FirstStart.submit(false);")
-        time.sleep(30)
+        time.sleep(10)
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
-        time.sleep(130)
+        time.sleep(30)
         self.driver.save_screenshot("teamcity_fail.png")
         self.find(self.agreement)
 
