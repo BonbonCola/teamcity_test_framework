@@ -46,7 +46,6 @@ runs:
         sed -i.bak "s|base_url = .*|base_url = \"http://$HOST:8111\"|" main/api/configs/env_config.toml
         sed -i.bak "s|internal_base_url = .*|internal_base_url = \"http://$HOST:8111\"|" main/api/configs/env_config.toml
         sed -i.bak "s|selenoid_url = .*|selenoid_url = \"http://$HOST:4444/wd/hub\"|" main/api/configs/env_config.toml
-        sed -i.bak "s|superusertoken = .*|superusertoken = \"$SUPER_USER_TOKEN\"|" main/api/configs/env_config.toml
 
     - name: Setup TeamCity Server (via pytest) # Настраиваем TeamCity автоматически с помощью теста
       shell: bash
@@ -64,5 +63,8 @@ runs:
       run: |
         echo "SUPER_USER_TOKEN=$(docker logs teamcity-server | grep 'Super user authentication token' | tail -n 1 | awk '{print \$6}')" >> $GITHUB_ENV
 
-
-
+    - name: Patch env_config.toml with actual values  # Обновляем конфигурационный файл проекта актуальными значениями (IP, токен, порты)
+      shell: bash
+      run: |
+        echo "🔧 Updating env_config.toml with new SUPER_USER_TOKEN"
+        sed -i.bak "s|superusertoken = .*|superusertoken = \"$SUPER_USER_TOKEN\"|" main/api/configs/env_config.toml
