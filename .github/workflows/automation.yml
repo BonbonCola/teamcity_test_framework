@@ -64,7 +64,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: teamcity-fail-screenshot
-          path: teamcity_fail.png
+          path: |
+            teamcity_fail.png
+            teamcity_fail1.png
 
 # Загружаем историю Allure Report с специальной ветки gh-pages (https://allurereport.org/docs/integrations-github/)
       - name: Load test report history
