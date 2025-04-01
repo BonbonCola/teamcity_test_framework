@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 from main.api.configs.config import Config
 from main.ui.base_create_page import BaseCreatePage
-import time
 
 class BuildCreatePage(BaseCreatePage):
 
@@ -21,7 +20,6 @@ class BuildCreatePage(BaseCreatePage):
         super().base_create_form(repository_url)
 
     def setup_build(self, buildtype_name):
-        time.sleep(15)
         self.type(self.input_buildtype_name, buildtype_name)
         self.click(self.button_proceed)
 
