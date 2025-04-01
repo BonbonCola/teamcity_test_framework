@@ -26,6 +26,6 @@ class BasePage:
 
     def type(self, locator, text):
         """Обертка для ввода текста"""
-        element = self.find(locator)
+        element = self.find(locator, timeout=60)
         element.clear()
         element.send_keys(text)
