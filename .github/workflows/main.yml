@@ -2,14 +2,6 @@ name: TeamCity deployment
 
 on: push
 
-permissions:
-  contents: read
-  actions: read
-
-defaults:
-  run:
-    shell: bash
-
 jobs:
   init:
     runs-on: ubuntu-latest
