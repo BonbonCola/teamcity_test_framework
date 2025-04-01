@@ -8,6 +8,7 @@ from main.framework.base_ui_test import BaseUiTest
 from main.ui.build_create_page import BuildCreatePage
 from main.ui.build_page import BuildPage
 from main.ui.login_page import LoginPage
+import time
 
 @pytest.mark.regression
 class TestCreateBuild(BaseUiTest):
@@ -26,9 +27,11 @@ class TestCreateBuild(BaseUiTest):
         # взаимодействие с UI
         with allure.step("Open `Create Build Page` (http://localhost:8111/admin/createObjectMenu.html)"):
             create_build_page = BuildCreatePage.open(driver = self.driver, project_id=self.test_data.project.id)
+            self.driver.save_screenshot("teamcity_fail2.png")
+            time.sleep(10)
         with allure.step("Send all build parameters (repository URL)"):
             self.driver.save_screenshot("teamcity_fail1.png")
-            create_build_page.base_create_form("https://github.com/BonbonCola/test_teamcity")
+            create_build_page.create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
             pass
         with allure.step("Fix Build Type name value"):

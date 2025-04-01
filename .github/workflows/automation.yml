@@ -66,6 +66,7 @@ jobs:
           path: |
             teamcity_fail.png
             teamcity_fail1.png
+            teamcity_fail2.png
 
 # Загружаем историю Allure Report с специальной ветки gh-pages (https://allurereport.org/docs/integrations-github/)
       - name: Load test report history
