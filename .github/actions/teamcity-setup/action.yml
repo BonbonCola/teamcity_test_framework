@@ -70,4 +70,5 @@ runs:
         sed -i.bak "s|superusertoken = .*|superusertoken = \"$SUPER_USER_TOKEN\"|" main/api/configs/env_config.toml
 
     - name: Show env_config.toml
+      shell: bash
       run: cat main/api/configs/env_config.toml
