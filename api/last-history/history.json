@@ -1,0 +1,1 @@
+{"d7e25324f8eb5275e162241ebd57f1fa":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"3bac486510d3c904","reportUrl":"https://BonbonCola.github.io/teamcity_test_framework/api/48//#testresult/3bac486510d3c904","status":"passed","time":{"start":1743518528934,"stop":1743518595734,"duration":66800}}]}}
