@@ -1,8 +1,4 @@
 from abc import ABC, abstractmethod
-import json
-from datetime import datetime
-import os
-import uuid
 
 class Request():
     # Request - это класс, описывающий меняющиеся параметры запроса, такие как: спецификация, эндпоинт (relative URL, model)
