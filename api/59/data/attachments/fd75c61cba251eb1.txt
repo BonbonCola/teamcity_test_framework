@@ -1,0 +1,17 @@
+GET http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
+PUT http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
+POST http://http://172.17.0.1:8111/app/rest/users
+Status Code: 200
+Response Text: {"username":"andrewmcdaniel","id":8,"email":"nicolekelley@example.org","href":"/app/rest/users/id:8","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"andrewmcdaniel"},{"name":"prop1","value":"little"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:8/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:8/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 400
+Response Text: Responding with error, status code: 400 (Bad Request).
+Details: jetbrains.buildServer.server.rest.errors.BadRequestException: Project name cannot be empty.
+Invalid request. Please check the request URL and data are correct.
+DELETE http://172.17.0.1:8111/app/rest/users/id:8
+Status Code: 204
+Response Text: 
+PUT http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
