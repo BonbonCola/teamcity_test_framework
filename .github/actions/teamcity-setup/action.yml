@@ -61,13 +61,17 @@ runs:
     - name: Extract SUPER_USER_TOKEN  # Получаем токен суперпользователя из логов TeamCity и кладем в переменную гитхаб экшнс
       shell: bash
       run: |
-        echo "SUPER_USER_TOKEN=$(docker logs teamcity-server | grep 'Super user authentication token' | tail -n 1 | awk '{print \$6}')" >> $GITHUB_ENV
+        echo "SUPER_USER_TOKEN=$(docker logs teamcity-server | grep 'Super user authentication token' | tail -n 1 | sed -E 's/.*token: ([0-9]+).*/\1/')" >> $GITHUB_ENV
 
     - name: Patch env_config.toml with actual values  # Обновляем конфигурационный файл проекта актуальными значениями (IP, токен, порты)
       shell: bash
       run: |
         echo "🔧 Updating env_config.toml with new SUPER_USER_TOKEN"
         sed -i.bak "s|superusertoken = .*|superusertoken = \"$SUPER_USER_TOKEN\"|" main/api/configs/env_config.toml
+
+    - name: Сheck SUPER_USER_TOKEN value
+      shell: bash
+      run: echo "SUPER_USER_TOKEN=$SUPER_USER_TOKEN"
 
     - name: Show env_config.toml
       shell: bash
