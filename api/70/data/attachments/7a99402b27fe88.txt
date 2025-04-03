@@ -1,0 +1,23 @@
+GET http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
+PUT http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
+POST http://http://172.17.0.1:8111/app/rest/users
+Status Code: 200
+Response Text: {"username":"watsonveronica","id":6,"email":"sylviaturner@example.org","href":"/app/rest/users/id:6","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"watsonveronica"},{"name":"prop1","value":"factor"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:6/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:6/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 200
+Response Text: {"id":"visit","name":"after","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:visit","webUrl":"http://localhost:8111/project.html?projectId=visit","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:visit/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:visit)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:visit/projectFeatures"},"projects":{"count":0}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 400
+Response Text: Responding with error, status code: 400 (Bad Request).
+Details: jetbrains.buildServer.serverSide.DuplicateProjectNameException: Project with this name already exists: after
+Error occurred while processing this request.
+DELETE http://172.17.0.1:8111/app/rest/users/id:6
+Status Code: 204
+Response Text: 
+DELETE http://172.17.0.1:8111/app/rest/projects/id:visit
+Status Code: 204
+Response Text: 
+PUT http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
