@@ -28,7 +28,6 @@ class TestCreateBuild(BaseUiTest):
             login_page.login(self.test_data.user)
         # взаимодействие с UI
         with allure.step("Open `Create Build Page` (http://localhost:8111/admin/createObjectMenu.html)"):
-            self.driver.delete_all_cookies()
             create_build_page = BuildCreatePage.open(driver = self.driver, project_id=self.test_data.project.id)
             time.sleep(15)
         with allure.step("Send all build parameters (repository URL)"):
