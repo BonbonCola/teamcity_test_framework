@@ -127,7 +127,7 @@ class TestProject(BaseApiTest):
             print(f'{self.test_data.project.model_dump(exclude={"id"})}')
             project = project_request.create(self.test_data.project.model_dump(exclude={"id"}))
         with allure.step("Check project was created with id == name"):
-            assert project.json()['id'].lower() == self.test_data.project.name.replace(" ", "").replace("-", ""), f"Ошибка: {project_request.status_code}"
+            assert project.json()['id'].lower() == self.test_data.project.name.replace(" ", "").replace("-", ""), f"Ошибка: id не совпадает!"
 
     @pytest.mark.negative
     @pytest.mark.crud
