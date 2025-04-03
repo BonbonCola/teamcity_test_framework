@@ -36,7 +36,6 @@ class TestCreateBuild(BaseUiTest):
             create_build_page.base_create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
             time.sleep(10)
-            self.driver.save_screenshot("teamcity_fail2.png")
             pass
         with allure.step("Fix Build Type name value"):
             create_build_page.setup_build(self.test_data.buildtype.name)
