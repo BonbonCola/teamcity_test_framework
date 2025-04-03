@@ -1,0 +1,29 @@
+GET http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
+PUT http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
+POST http://http://172.17.0.1:8111/app/rest/users
+Status Code: 200
+Response Text: {"username":"barbarajones","id":5,"email":"mendozajeffery@example.net","href":"/app/rest/users/id:5","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"barbarajones"},{"name":"prop1","value":"close"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:5/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:5/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 200
+Response Text: {"id":"process","name":"address","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:process","webUrl":"http://localhost:8111/project.html?projectId=process","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:process/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:process)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:process/projectFeatures"},"projects":{"count":0}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 200
+Response Text: {"id":"significant","name":"ahead","parentProjectId":"process","virtual":false,"href":"/app/rest/projects/id:significant","webUrl":"http://localhost:8111/project.html?projectId=significant","parentProject":{"id":"process","name":"address","parentProjectId":"_Root","href":"/app/rest/projects/id:process","webUrl":"http://localhost:8111/project.html?projectId=process"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:significant/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:significant)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:significant/projectFeatures"},"projects":{"count":0}}
+GET http://http://172.17.0.1:8111/app/rest/projects/id:significant
+Status Code: 200
+Response Text: {"id":"significant","name":"ahead","parentProjectId":"process","virtual":false,"href":"/app/rest/projects/id:significant","webUrl":"http://localhost:8111/project.html?projectId=significant","parentProject":{"id":"process","name":"address","parentProjectId":"_Root","href":"/app/rest/projects/id:process","webUrl":"http://localhost:8111/project.html?projectId=process"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:significant/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:significant)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:significant/projectFeatures"},"projects":{"count":0}}
+DELETE http://172.17.0.1:8111/app/rest/users/id:5
+Status Code: 204
+Response Text: 
+DELETE http://172.17.0.1:8111/app/rest/projects/id:process
+Status Code: 204
+Response Text: 
+DELETE http://172.17.0.1:8111/app/rest/projects/id:significant
+Status Code: 404
+Response Text: Responding with error, status code: 404 (Not Found).
+Details: jetbrains.buildServer.server.rest.errors.NotFoundException: No project found by locator 'count:1,id:significant'. Project cannot be found by external id 'significant'.
+Could not find the entity requested. Check the reference is correct and the user has permissions to access the entity.
+PUT http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
