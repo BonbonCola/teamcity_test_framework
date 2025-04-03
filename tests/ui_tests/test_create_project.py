@@ -26,7 +26,6 @@ class TestCreateProject(BaseUiTest):
             create_project_page  = ProjectCreatePage.open(driver = self.driver, project_id="_Root")
             time.sleep(10)
         with allure.step("Send all project parameters (repository URL)"):
-            self.driver.save_screenshot("teamcity_fail1.png")
             create_project_page.create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
             pass

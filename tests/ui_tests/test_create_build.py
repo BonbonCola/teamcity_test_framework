@@ -30,13 +30,15 @@ class TestCreateBuild(BaseUiTest):
             create_build_page = BuildCreatePage.open(driver = self.driver, project_id=self.test_data.project.id)
             time.sleep(10)
         with allure.step("Send all build parameters (repository URL)"):
+            self.driver.save_screenshot("teamcity_fail.png")
             create_build_page.create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
+            time.sleep(10)
+            self.driver.save_screenshot("teamcity_fail1.png")
             pass
         with allure.step("Fix Build Type name value"):
             create_build_page.setup_build(self.test_data.buildtype.name)
         with allure.step("Click `Proceed`"):
-            self.driver.save_screenshot("teamcity_fail.png")
             pass
         with allure.step("Check that build type was successfully created with correct data on API level"):
             time.sleep(10)
