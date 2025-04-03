@@ -1,4 +1,0 @@
-POST http://http://172.17.0.1:8111/app/rest/users
-Status Code: 401
-Response Text: Incorrect username or password.
-To login manually go to "/login.html" page
