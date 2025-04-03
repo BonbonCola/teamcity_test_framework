@@ -1,0 +1,29 @@
+GET http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
+PUT http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 200
+Response Text: {"id":"scientist","name":"education","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:scientist","webUrl":"http://localhost:8111/project.html?projectId=scientist","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:scientist/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:scientist)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:scientist/projectFeatures"},"projects":{"count":0}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 200
+Response Text: {"id":"half","name":"find","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:half","webUrl":"http://localhost:8111/project.html?projectId=half","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:half/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:half)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:half/projectFeatures"},"projects":{"count":0}}
+POST http://http://172.17.0.1:8111/app/rest/users
+Status Code: 200
+Response Text: {"username":"twalsh","id":12,"email":"elizabeth63@example.com","href":"/app/rest/users/id:12","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"twalsh"},{"name":"prop1","value":"send"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:12/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"p:half","href":"/app/rest/users/id:12/roles/PROJECT_ADMIN/p:half"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 403
+Response Text: Responding with error, status code: 403 (Forbidden).
+Details: jetbrains.buildServer.serverSide.auth.AccessDeniedException: You do not have "Create subproject" permission in project with internal id: project9
+Access denied. Check the user has enough permissions to perform the operation.
+DELETE http://172.17.0.1:8111/app/rest/projects/id:half
+Status Code: 204
+Response Text: 
+DELETE http://172.17.0.1:8111/app/rest/projects/id:scientist
+Status Code: 204
+Response Text: 
+DELETE http://172.17.0.1:8111/app/rest/users/id:12
+Status Code: 204
+Response Text: 
+PUT http://172.17.0.1:8111/app/rest/server/authSettings
+Status code:200
