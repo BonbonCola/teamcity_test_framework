@@ -29,12 +29,13 @@ class TestCreateBuild(BaseUiTest):
         with allure.step("Open `Create Build Page` (http://localhost:8111/admin/createObjectMenu.html)"):
             create_build_page = BuildCreatePage.open(driver = self.driver, project_id=self.test_data.project.id)
             time.sleep(10)
-        with allure.step("Send all build parameters (repository URL)"):
             self.driver.save_screenshot("teamcity_fail.png")
+        with allure.step("Send all build parameters (repository URL)"):
+            self.driver.save_screenshot("teamcity_fail1.png")
             create_build_page.create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
             time.sleep(10)
-            self.driver.save_screenshot("teamcity_fail1.png")
+            self.driver.save_screenshot("teamcity_fail2.png")
             pass
         with allure.step("Fix Build Type name value"):
             create_build_page.setup_build(self.test_data.buildtype.name)
