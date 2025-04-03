@@ -4,6 +4,8 @@ from main.api.configs.config import Config
 from main.api.models.user_model import User
 from main.ui.base_page import BasePage
 
+import time
+
 
 class LoginPage(BasePage):
 
@@ -28,6 +30,7 @@ class LoginPage(BasePage):
         self.type(self.input_username, user.username)
         self.type(self.input_password, user.password)
         self.click(self.button_login)
+        time.sleep(10)
 
     def create_admin_user(self):
         self.type(self.input_admin_username, "test")

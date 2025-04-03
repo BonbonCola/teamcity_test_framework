@@ -24,12 +24,13 @@ class TestCreateBuild(BaseUiTest):
         with allure.step("Login as user"):
             self.driver.delete_all_cookies()
             login_page = LoginPage.open(self.driver)
+            self.driver.save_screenshot("teamcity_fail.png")
             login_page.login(self.test_data.user)
         # взаимодействие с UI
         with allure.step("Open `Create Build Page` (http://localhost:8111/admin/createObjectMenu.html)"):
+            self.driver.delete_all_cookies()
             create_build_page = BuildCreatePage.open(driver = self.driver, project_id=self.test_data.project.id)
             time.sleep(15)
-            self.driver.save_screenshot("teamcity_fail.png")
         with allure.step("Send all build parameters (repository URL)"):
             self.driver.save_screenshot("teamcity_fail1.png")
             create_build_page.base_create_form("https://github.com/BonbonCola/test_teamcity")
@@ -59,6 +60,7 @@ class TestCreateBuild(BaseUiTest):
             project_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.PROJECTS.url)
             project_request.create(self.test_data.project.model_dump())
         with allure.step("Login as user"):
+            self.driver.delete_all_cookies()
             login_page = LoginPage.open(self.driver)
             login_page.login(self.test_data.user)
             # взаимодействие с UI
