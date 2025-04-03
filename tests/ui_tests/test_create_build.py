@@ -25,22 +25,21 @@ class TestCreateBuild(BaseUiTest):
             self.driver.delete_all_cookies()
             login_page = LoginPage.open(self.driver)
             login_page.login(self.test_data.user)
-            self.driver.save_screenshot("teamcity_fail.png")
         # взаимодействие с UI
         with allure.step("Open `Create Build Page` (http://localhost:8111/admin/createObjectMenu.html)"):
             create_build_page = BuildCreatePage.open(driver = self.driver, project_id=self.test_data.project.id)
-            self.driver.save_screenshot("teamcity_fail2.png")
             time.sleep(10)
         with allure.step("Send all build parameters (repository URL)"):
-            self.driver.save_screenshot("teamcity_fail1.png")
             create_build_page.create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
             pass
         with allure.step("Fix Build Type name value"):
             create_build_page.setup_build(self.test_data.buildtype.name)
         with allure.step("Click `Proceed`"):
+            self.driver.save_screenshot("teamcity_fail.png")
             pass
         with allure.step("Check that build type was successfully created with correct data on API level"):
+            time.sleep(10)
             build_request = CheckedRequest(self.specifications.authSpec(self.test_data.user), Endpoint.BUILD_TYPES.url)
             created_build = build_request.read(f'name:{self.test_data.buildtype.name}')
             assert created_build.json()["name"] == self.test_data.buildtype.name, f'Ошибка, {created_build.json()["name"]}  != {self.test_data.buildtype.name}'

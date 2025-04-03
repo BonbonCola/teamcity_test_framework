@@ -15,7 +15,6 @@ class BaseCreatePage(BasePage):
 
     def base_create_form(self, repository_url):
         time.sleep(15)
-        self.driver.save_screenshot("teamcity_fail.png")
         self.type(self.input_repository_url, repository_url)
         self.click(self.button_proceed)
 

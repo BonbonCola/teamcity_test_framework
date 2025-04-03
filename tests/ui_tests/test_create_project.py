@@ -8,6 +8,7 @@ from main.ui.login_page import LoginPage
 from main.ui.project_create_page import ProjectCreatePage
 from main.ui.project_page import ProjectPage
 from main.ui.projects_page import ProjectsPage
+import time
 
 @pytest.mark.regression
 class TestCreateProject(BaseUiTest):
@@ -23,7 +24,9 @@ class TestCreateProject(BaseUiTest):
         #взаимодействие с UI
         with allure.step("Open `Create Project Page` (http://localhost:8111/admin/createObjectMenu.html)"):
             create_project_page  = ProjectCreatePage.open(driver = self.driver, project_id="_Root")
+            time.sleep(10)
         with allure.step("Send all project parameters (repository URL)"):
+            self.driver.save_screenshot("teamcity_fail1.png")
             create_project_page.create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
             pass
