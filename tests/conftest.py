@@ -1,14 +1,18 @@
 import sys
 import os
+from copy import copy
 
 import pytest
 from faker import Faker
 from collections import defaultdict
 
-from main.api.requests.endpoints import Endpoint
 from main.api.requests.unchecked_crud_request import UncheckedRequest
 from main.api.models.api_models import ParentProject, Project, BuildType, SourceProject
 from main.api.models.user_model import User, Roles, Role, Property, Properties, scope
+
+from main.api.models.server_auth_settings import ServerAuthSettings
+from main.api.requests.endpoints import Endpoint
+from main.api.requests.server_auth_settings_request import ServerAuthSettingRequest
 from main.api.specs.specifications import Specifications
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
@@ -110,8 +114,33 @@ class TestDataStorage:
                 UncheckedRequest(Specifications().superUserSpec(), endpoint).delete(entity_id)
         self.created_entities.clear()
 
-@pytest.fixture(scope="function", autouse=True) # генерируем тестовые данные для каждого теста и удаляем их после завершения теста
+@pytest.fixture(scope="function") # генерируем тестовые данные для каждого теста и удаляем их после завершения теста
 def test_data():
     test_data = TestData()
     yield test_data
     TestDataStorage().delete_created_entities()
+
+@pytest.fixture(scope="function")
+def specifications():
+    """ Подключает API-сессию ко всем тестам """
+    specifications = Specifications()
+    yield specifications
+
+@pytest.fixture(scope="session", autouse=True)
+def per_project_permissions():
+    specifications = Specifications()
+    # Получаем текущие настройки per_project_permissions
+    permissions_request = ServerAuthSettingRequest(specifications.superUserSpec(), Endpoint.AUTH_SETTINGS.url)
+    permissions_response = permissions_request.read()
+    permissions_response_to_json = permissions_response.json()
+    per_project_permissions = ServerAuthSettings(**permissions_response_to_json)
+    # Обновляем значение per_project_permissions на true
+    new_per_project_permissions = copy(per_project_permissions)
+    new_per_project_permissions.perProjectPermissions = True
+    update_permissions_request = ServerAuthSettingRequest(specifications.superUserSpec(),
+                                                          Endpoint.AUTH_SETTINGS.url)
+    update_permissions_request.update(new_per_project_permissions.model_dump())
+    yield
+    # Возвращаем настройке perProjectPermissions исходное значение
+    permissions_request = ServerAuthSettingRequest(specifications.superUserSpec(), Endpoint.AUTH_SETTINGS.url)
+    permissions_response = permissions_request.update(per_project_permissions.model_dump())
