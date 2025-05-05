@@ -6,6 +6,9 @@ import pytest
 from faker import Faker
 from collections import defaultdict
 
+from selenium import webdriver
+from main.api.configs.config import Config
+
 from main.api.requests.unchecked_crud_request import UncheckedRequest
 from main.api.models.api_models import ParentProject, Project, BuildType, SourceProject
 from main.api.models.user_model import User, Roles, Role, Property, Properties, scope
@@ -144,3 +147,26 @@ def per_project_permissions():
     # Возвращаем настройке perProjectPermissions исходное значение
     permissions_request = ServerAuthSettingRequest(specifications.superUserSpec(), Endpoint.AUTH_SETTINGS.url)
     permissions_response = permissions_request.update(per_project_permissions.model_dump())
+
+@pytest.fixture(scope="function")
+def driver():
+    options = webdriver.ChromeOptions()
+    options.set_capability("browserName", "chrome")  # Явно указываем браузер
+    options.set_capability("browserVersion", "91.0")  # Указываем версию!
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument(f"--window-size={Config().properties.browsers.browser_size}")
+
+    options.set_capability("selenoid:options", {
+        "enableVNC": True,
+        "enableLog": True
+    })
+
+    driver = webdriver.Remote(
+        command_executor=Config().properties.servers.dev.selenoid_url,
+        options=options
+    )
+    yield driver
+
+    if driver:
+        driver.quit()
