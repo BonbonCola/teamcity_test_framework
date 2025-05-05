@@ -1,13 +1,14 @@
 import sys
 import os
 
+import pytest
 from faker import Faker
 from collections import defaultdict
 
 from main.api.requests.endpoints import Endpoint
 from main.api.requests.unchecked_crud_request import UncheckedRequest
 from main.api.models.api_models import ParentProject, Project, BuildType, SourceProject
-from main.api.models.user_model import User, Roles, Role, Property, Properties
+from main.api.models.user_model import User, Roles, Role, Property, Properties, scope
 from main.api.specs.specifications import Specifications
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
@@ -73,7 +74,7 @@ def generate_test_build_type(project: Project):
         project=project,
 
     )
-#TODO: переделать на использование фикстур
+
 class TestData():
     def __init__(self):
         self.user = generate_test_user()
@@ -108,3 +109,9 @@ class TestDataStorage:
             for entity_id in entity_ids:
                 UncheckedRequest(Specifications().superUserSpec(), endpoint).delete(entity_id)
         self.created_entities.clear()
+
+@pytest.fixture(scope="function", autouse=True) # генерируем тестовые данные для каждого теста и удаляем их после завершения теста
+def test_data():
+    test_data = TestData()
+    yield test_data
+    TestDataStorage().delete_created_entities()

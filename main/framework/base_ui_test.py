@@ -2,12 +2,10 @@ from selenium import webdriver
 
 from main.api.configs.config import Config
 from main.api.specs.specifications import Specifications
-from main.framework.base_test import BaseTest
 
 
-class BaseUiTest(BaseTest):
+class BaseUiTest():
     def setup_method(self): #настройка Selenium WebDriver в selenoid перед каждым тестом
-        super().setup_method()
         options = webdriver.ChromeOptions()
         options.set_capability("browserName", "chrome")  # Явно указываем браузер
         options.set_capability("browserVersion", "91.0")  # Указываем версию!
@@ -28,6 +26,5 @@ class BaseUiTest(BaseTest):
         self.specifications = Specifications()
 
     def teardown_method(self): #Закрытие браузера после теста
-        super().teardown_method()
         if self.driver:
             self.driver.quit()
