@@ -129,7 +129,7 @@ def specifications():
     specifications = Specifications()
     yield specifications
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session")
 def per_project_permissions():
     specifications = Specifications()
     # Получаем текущие настройки per_project_permissions

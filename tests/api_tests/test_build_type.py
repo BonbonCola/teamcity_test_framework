@@ -7,6 +7,7 @@ from main.api.requests.endpoints import Endpoint
 
 
 @pytest.mark.regression
+@pytest.mark.usefixtures("per_project_permissions")
 class TestBuildType():
 
     @pytest.mark.positive

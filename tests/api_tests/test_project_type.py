@@ -11,6 +11,7 @@ from tests.conftest import generate_test_child_project, generate_test_project, g
 
 
 @pytest.mark.regression
+@pytest.mark.usefixtures("per_project_permissions")
 class TestProject():
 
     @pytest.mark.positive
