@@ -12,6 +12,7 @@ import time
 @pytest.mark.regression
 class TestCreateProject():
 
+    @pytest.mark.positive
     def test_user_creates_project(self, test_data, specifications, driver):
         """User should be able to create project"""
         #подготовка окружения
@@ -51,6 +52,7 @@ class TestCreateProject():
                 projects_names.append(p.get_name())
             assert test_data.project.name in projects_names, f"Ошибка: {test_data.project.name} нет в списке"
 
+    @pytest.mark.negative
     def test_user_creates_project_without_name(self, test_data, specifications, driver):
         with allure.step("Login as user"):
             pass

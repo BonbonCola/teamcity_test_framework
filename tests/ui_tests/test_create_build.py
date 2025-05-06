@@ -12,6 +12,7 @@ import time
 @pytest.mark.regression
 class TestCreateBuild():
 
+    @pytest.mark.positive
     def test_user_creates_build(self, test_data, specifications, driver):
         """User should be able to create build"""
         # подготовка окружения
@@ -48,6 +49,7 @@ class TestCreateBuild():
             build_page = BuildPage.open(driver, test_data.project.id, test_data.buildtype.name)
             assert build_page.get_title_build_name() == test_data.buildtype.name, f'Ошибка, {build_page.get_title_build_name()}  != {test_data.buildtype.name}'
 
+    @pytest.mark.negative
     def test_user_creates_build_without_name(self, test_data, specifications, driver):
         """User should not be able to create build without a name"""
         # подготовка окружения
