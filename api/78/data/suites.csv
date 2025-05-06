@@ -1,2 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Tue May 06 13:20:53 GMT 2025","Tue May 06 13:22:24 GMT 2025","90502","tests.ui_tests","test_setup_server","TestSetupServer","","","test_setup_teamcity_server",""
+"broken","Tue May 06 13:28:54 GMT 2025","Tue May 06 13:30:25 GMT 2025","90698","tests.ui_tests","test_setup_server","TestSetupServer","","","test_setup_teamcity_server",""
