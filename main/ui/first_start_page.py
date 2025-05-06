@@ -32,6 +32,7 @@ class FirstStartPage(BasePage):
         self.click(self.button_proceed)
         time.sleep(30)
         time.sleep(10)
+        self.driver.save_screenshot("teamcity_fail2.png")
         self.find(self.agreement)
 
         agreement = self.find(self.scrollable_div)
