@@ -1,0 +1,3 @@
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:403 DELETE http://172.17.0.1:4444/wd/hub/session/c35b34cbad4c45c00716bdaa8b2a2a23 {}
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:436 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Cache-Control': 'no-cache', 'Content-Length': '14', 'Content-Type': 'application/json, application/json; charset=utf-8', 'Date': 'Tue, 06 May 2025 19:44:10 GMT'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:465 Finished Request
