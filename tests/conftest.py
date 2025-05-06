@@ -148,10 +148,10 @@ def per_project_permissions():
     permissions_request = ServerAuthSettingRequest(specifications.superUserSpec(), Endpoint.AUTH_SETTINGS.url)
     permissions_response = permissions_request.update(per_project_permissions.model_dump())
 
-@pytest.fixture(scope="session", params=Config().get_browser_config()) # параметризируем фикстуру на будущее, чтоюы можно было запускать в разных браузерах, браузеры в конфиге
+@pytest.fixture(scope="session", params=Config().get_browser_config()) # параметризируем фикстуру на будущее, чтобы можно было запускать в разных браузерах, браузеры в конфиге
 def driver(request):
+    browser, version = request.param
     options = webdriver.ChromeOptions()
-    browser, version = request.params
     options.set_capability("browserName", browser)  #  указываем браузер
     options.set_capability("browserVersion", version)  # указываем версию
     options.add_argument("--disable-gpu")
