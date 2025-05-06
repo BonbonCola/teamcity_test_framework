@@ -117,7 +117,7 @@ class TestDataStorage:
                 UncheckedRequest(Specifications().superUserSpec(), endpoint).delete(entity_id)
         self.created_entities.clear()
 
-@pytest.fixture(scope="function") # генерируем тестовые данные для каждого теста и удаляем их после завершения теста
+@pytest.fixture(scope="function") # генерирует тестовые данные для каждого теста и удаляем их после завершения теста
 def test_data():
     test_data = TestData()
     yield test_data
@@ -148,11 +148,12 @@ def per_project_permissions():
     permissions_request = ServerAuthSettingRequest(specifications.superUserSpec(), Endpoint.AUTH_SETTINGS.url)
     permissions_response = permissions_request.update(per_project_permissions.model_dump())
 
-@pytest.fixture(scope="function")
-def driver():
+@pytest.fixture(scope="session", params=Config().get_browser_config()) # параметризируем фикстуру на будущее, чтоюы можно было запускать в разных браузерах, браузеры в конфиге
+def driver(request):
     options = webdriver.ChromeOptions()
-    options.set_capability("browserName", "chrome")  # Явно указываем браузер
-    options.set_capability("browserVersion", "91.0")  # Указываем версию!
+    browser, version = request.params
+    options.set_capability("browserName", browser)  #  указываем браузер
+    options.set_capability("browserVersion", version)  # указываем версию
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument(f"--window-size={Config().properties.browsers.browser_size}")

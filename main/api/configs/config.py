@@ -18,3 +18,7 @@ class Config:
 
     def get_config(self):
         return (self._instance)
+
+    def get_browser_config(self):
+        matrix = self.properties.get("browser_matrix", default=[])
+        return [(item.name, item.version) for item in matrix]
