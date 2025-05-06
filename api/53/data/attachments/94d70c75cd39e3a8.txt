@@ -1,2 +1,0 @@
-GET http://172.17.0.1:8111/app/rest/server/authSettings
-Status code:401
