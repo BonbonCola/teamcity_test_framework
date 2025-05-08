@@ -24,14 +24,12 @@ class TestCreateBuild():
         with allure.step("Login as user"):
             driver.delete_all_cookies()
             login_page = LoginPage.open(driver)
-            driver.save_screenshot("teamcity_fail.png")
             login_page.login(test_data.user)
         # взаимодействие с UI
         with allure.step("Open `Create Build Page` (http://localhost:8111/admin/createObjectMenu.html)"):
             create_build_page = BuildCreatePage.open(driver = driver, project_id=test_data.project.id)
             time.sleep(15)
         with allure.step("Send all build parameters (repository URL)"):
-            driver.save_screenshot("teamcity_fail1.png")
             create_build_page.base_create_form("https://github.com/BonbonCola/test_teamcity")
         with allure.step("Click `Proceed`"):
             time.sleep(10)
