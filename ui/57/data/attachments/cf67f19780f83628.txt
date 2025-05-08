@@ -1,6 +1,0 @@
-POST http://http://172.17.0.1:8111/app/rest/users
-Status Code: 200
-Response Text: {"username":"smithmichele","id":4,"email":"christopher34@example.net","href":"/app/rest/users/id:4","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"smithmichele"},{"name":"prop1","value":"partner"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:4/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:4/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
-DELETE http://172.17.0.1:8111/app/rest/users/id:4
-Status Code: 204
-Response Text: 
