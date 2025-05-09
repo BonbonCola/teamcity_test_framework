@@ -134,14 +134,15 @@ class TestProject():
     @allure.feature("Project Management")
     @allure.story("User cannot create project without permission")
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_user_creates_project_without_permission(self, test_data, specifications):
+    @pytest.mark.parametrize("role_id", ["PROJECT_VIEWER", "TOOLS_INTEGRATION"]) # параметризируем чтобы проверить с разыми ролями:
+    def test_user_creates_project_without_permission(self, role_id, test_data, specifications):
         """User cannot create project without permission"""
         with allure.step("Create admin user"):
             user_request = CheckedRequest(specifications.superUserSpec(), Endpoint.USERS.url)
             admin_user = user_request.create(test_data.user.model_dump())
         with allure.step("Create user without permission"):
             new_user_without_permission_request = CheckedRequest(specifications.superUserSpec(), Endpoint.USERS.url)
-            new_user_without_permission = generate_test_user("PROJECT_VIEWER", "g") #TODO: сделать тут тоже enum и нормально обращаться к этим параметрам
+            new_user_without_permission = generate_test_user(role_id, "g") #TODO: сделать тут тоже enum и нормально обращаться к этим параметрам
             new_user_without_permission_created = new_user_without_permission_request.create(new_user_without_permission.model_dump())
         with allure.step("Create project by user"):
             project_request = UncheckedRequest(specifications.authSpec(new_user_without_permission), Endpoint.PROJECTS.url)
