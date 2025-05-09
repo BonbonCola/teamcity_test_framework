@@ -1,0 +1,4 @@
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:403 DELETE http://172.17.0.1:4444/wd/hub/session/e07de76ceb43977fb53a7af10a7b255c/cookie {}
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:436 Remote response: status=404 | data={"value":{"error":"invalid session id","message":"session timed out or not found"}}
+ | headers=HTTPHeaderDict({'Content-Length': '84', 'Content-Type': 'application/json, application/json; charset=utf-8', 'Date': 'Fri, 09 May 2025 13:46:35 GMT'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:465 Finished Request
