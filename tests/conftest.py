@@ -11,19 +11,20 @@ from main.api.models.server_auth_settings import ServerAuthSettings
 from main.api.requests.endpoints import Endpoint
 from main.api.requests.server_auth_settings_request import ServerAuthSettingRequest
 from main.api.specs.specifications import Specifications
-from tests.factories.generators import generate_test_project, generate_test_user, generate_test_build_type, \
-    generate_test_child_project
+from tests.factories.generators import GenerateTest
 from tests.helpers.test_data_storage import TestDataStorage
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
+pytest_plugins = ("factories.user_factory",) # импортируем плагины с фабриками явно, чтобы pytest мог их найти
+
 class TestData():
     def __init__(self):
-        self.user = generate_test_user()
-        self.project = generate_test_project()
+        self.user = GenerateTest.generate_test_user()
+        self.project = GenerateTest.generate_test_project()
         self.project.locator
-        self.buildtype = generate_test_build_type(self.project)
-        self.child_project = generate_test_child_project(self.project)
+        self.buildtype = GenerateTest.generate_test_build_type(self.project)
+        self.child_project = GenerateTest.generate_test_child_project(self.project)
 
 @pytest.fixture(scope="function") # генерирует тестовые данные для каждого теста и удаляем их после завершения теста
 def test_data():
