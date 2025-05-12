@@ -1,0 +1,23 @@
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 200
+Response Text: {"id":"true","name":"production","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:true","webUrl":"http://localhost:8111/project.html?projectId=true","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:true/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:true)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:true/projectFeatures"},"projects":{"count":0}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 200
+Response Text: {"id":"democratic","name":"however","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:democratic","webUrl":"http://localhost:8111/project.html?projectId=democratic","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:democratic/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:democratic)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:democratic/projectFeatures"},"projects":{"count":0}}
+POST http://http://172.17.0.1:8111/app/rest/users
+Status Code: 200
+Response Text: {"username":"danielscarl","id":14,"email":"oneillroger@example.net","href":"/app/rest/users/id:14","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"danielscarl"},{"name":"prop1","value":"five"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:14/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"p:democratic","href":"/app/rest/users/id:14/roles/PROJECT_ADMIN/p:democratic"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+POST http://http://172.17.0.1:8111/app/rest/projects
+Status Code: 403
+Response Text: Responding with error, status code: 403 (Forbidden).
+Details: jetbrains.buildServer.serverSide.auth.AccessDeniedException: You do not have "Create subproject" permission in project with internal id: project9
+Access denied. Check the user has enough permissions to perform the operation.
+DELETE http://172.17.0.1:8111/app/rest/projects/id:true
+Status Code: 204
+Response Text: 
+DELETE http://172.17.0.1:8111/app/rest/projects/id:democratic
+Status Code: 204
+Response Text: 
+DELETE http://172.17.0.1:8111/app/rest/users/id:14
+Status Code: 204
+Response Text: 
