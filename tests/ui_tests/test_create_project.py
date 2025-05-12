@@ -13,14 +13,13 @@ import time
 class TestCreateProject():
 
     @pytest.mark.positive
-    def test_user_creates_project(self, test_data, specifications, driver):
+    def test_user_creates_project(self, test_data, user_factory, specifications, driver):
         """User should be able to create project"""
         #подготовка окружения
         with allure.step("Login as user"):
-            user_request = CheckedRequest(specifications.superUserSpec(), Endpoint.USERS.url)
-            user_request.create(test_data.user.model_dump())
+            user = user_factory(role_id="PROJECT_ADMIN", scope_type="g")
             login_page = LoginPage.open(driver)
-            login_page.login(test_data.user)
+            login_page.login(user)
         #взаимодействие с UI
         with allure.step("Open `Create Project Page` (http://localhost:8111/admin/createObjectMenu.html)"):
             create_project_page  = ProjectCreatePage.open(driver = driver, project_id="_Root")
@@ -53,7 +52,7 @@ class TestCreateProject():
             assert test_data.project.name in projects_names, f"Ошибка: {test_data.project.name} нет в списке"
 
     @pytest.mark.negative
-    def test_user_creates_project_without_name(self, test_data, specifications, driver):
+    def test_user_creates_project_without_name(self, test_data, user_factory, specifications, driver):
         with allure.step("Login as user"):
             pass
         with allure.step("Check number of projects"):
