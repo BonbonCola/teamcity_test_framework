@@ -6,7 +6,6 @@ import allure
 from main.api.requests.checked_crud_request import CheckedRequest
 from main.api.requests.unchecked_crud_request import UncheckedRequest
 from main.api.requests.endpoints import Endpoint
-from tests.factories.generators import GenerateTest
 
 
 @pytest.mark.regression
@@ -138,20 +137,20 @@ class TestProject():
     @allure.feature("Project Management")
     @allure.story("Admin user cannot create project in another user's project area")
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_admin_user_creates_project_in_another_user_project_area(self, test_data, user_factory, specifications):
+    def test_admin_user_creates_project_in_another_user_project_area(self, test_data, user_factory, project_factory,specifications):
         """Admin user cannot create project in another user's project area"""
         with allure.step("Create project area 1"):
             project_request = CheckedRequest(specifications.superUserSpec(), Endpoint.PROJECTS.url)
             project_request.create(test_data.project.model_dump())
         with allure.step("Create project area 2"):
             #TODO: сделать фабрику и не использовать так
-            project_2 = GenerateTest.generate_test_project()
+            project_2 = project_factory()
             project_2_request = CheckedRequest(specifications.superUserSpec(), Endpoint.PROJECTS.url)
             project_2_request.create(project_2.model_dump())
         with allure.step("Create admin user for project area 2"):
             admin_user_2 = user_factory("PROJECT_ADMIN", f"p:{project_2.id}")
         with allure.step("Create child project in project area 1 by admin user for project area 2"):
-            child_project_1 = GenerateTest.generate_test_child_project(test_data.project)
+            child_project_1 = project_factory(parent_project=test_data.project)
             child_project_request = UncheckedRequest(specifications.authSpec(admin_user_2), Endpoint.PROJECTS.url)
             child_project_created = child_project_request.create(child_project_1.model_dump())
         with allure.step("Check child project was not created with bad request code"):
@@ -163,17 +162,15 @@ class TestProject():
     @allure.feature("Project Management")
     @allure.story("User can copy project")
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_user_copy_project(self, test_data, user_factory, specifications):
+    def test_user_copy_project(self, test_data, user_factory, project_factory, specifications):
         """User should be able to copy project"""
         user = user_factory(role_id="PROJECT_ADMIN", scope_type="g")
         with allure.step("Create project by user"):
             project_request = CheckedRequest(specifications.authSpec(user), Endpoint.PROJECTS.url)
             new_project = project_request.create(test_data.project.model_dump())
         with allure.step("Copy project"):
-            #TODO: сделать фабрику и не использовать так
-            project_copy = GenerateTest.generate_test_copy_project(source_project=test_data.project)
+            project_copy = project_factory(source_project=test_data.project)
             project_copy_request = CheckedRequest(specifications.authSpec(user), Endpoint.PROJECTS.url)
-            print(f'COPY:{project_copy.model_dump()}')
             project_copy_request.create(project_copy.model_dump())
         with allure.step("Check project was copied successfully with correct data"):
             project_copy_created_request = CheckedRequest(specifications.authSpec(user), Endpoint.PROJECTS.url)

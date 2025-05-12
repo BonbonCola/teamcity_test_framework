@@ -16,7 +16,7 @@ from tests.helpers.test_data_storage import TestDataStorage
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
-pytest_plugins = ("factories.user_factory",) # импортируем плагины с фабриками явно, чтобы pytest мог их найти
+pytest_plugins = ("factories.user_factory", "factories.project_factory") # импортируем плагины с фабриками явно, чтобы pytest мог их найти
 
 class TestData():
     def __init__(self):

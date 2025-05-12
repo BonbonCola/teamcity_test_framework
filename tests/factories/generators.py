@@ -61,6 +61,27 @@ class GenerateTest:
         )
 
     @staticmethod
+    def generate_test_project_full(parent_project=None, source_project=None):
+        fake = Faker()
+        locator = "_Root"
+
+        project = Project(
+            id=fake.word(),
+            name=fake.word()
+        )
+
+        if parent_project is None:
+            project.locator = locator
+        else:
+            parent_project_id = ParentProject(locator=parent_project.id)
+            project.parentProject = parent_project_id
+        if source_project is not None:
+            source_project_id = SourceProject(locator=source_project.id)
+            project.locator = locator if parent_project is None else parent_project.id,
+            project.sourceProject = source_project_id
+        return project
+
+    @staticmethod
     def generate_test_build_type(project: Project):
         """Генерирует тестовый BuildType, привязанный к переданному проекту"""
         fake = Faker()
