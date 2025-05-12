@@ -1,7 +1,6 @@
 from main.api.requests.base_request import BaseCRUDRequest, Request
 from main.api.requests.unchecked_crud_request import UncheckedRequest
-
-from tests.conftest import TestDataStorage
+from tests.helpers.test_data_storage import TestDataStorage
 
 
 class CheckedRequest(BaseCRUDRequest, Request):
