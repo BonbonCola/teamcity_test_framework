@@ -22,45 +22,6 @@ class GenerateTest:
         )
 
     @staticmethod
-    def generate_test_project():
-        """Генерирует тестовый root проект"""
-        fake = Faker()
-        return Project(
-            id=fake.word(),
-            name=fake.word(),
-            locator="_Root"
-        )
-
-    @staticmethod
-    def generate_test_child_project(parent_project: Project):
-        """Генерирует тестовый child проект"""
-        fake = Faker()
-        parent_project_id = ParentProject(locator = parent_project.id)
-        return Project(
-            id=fake.word(),
-            name=fake.word(),
-            parentProject=parent_project_id
-        )
-
-    @staticmethod
-    def generate_test_copy_project(source_project, parent_project=None):
-        """Добавляет проект копирования."""
-        fake = Faker()
-        locator = "_Root"
-
-        source_project_id = SourceProject(locator = source_project.id)
-
-        if not source_project:
-            raise ValueError("sourceProject должен быть передан")
-
-        return Project(
-            id=fake.word(),
-            name=fake.word(),
-            locator=locator if parent_project is None else parent_project.id,
-            sourceProject=source_project_id
-        )
-
-    @staticmethod
     def generate_test_project_full(parent_project=None, source_project=None):
         fake = Faker()
         locator = "_Root"

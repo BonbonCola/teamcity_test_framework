@@ -21,10 +21,10 @@ pytest_plugins = ("factories.user_factory", "factories.project_factory") # им�
 class TestData():
     def __init__(self):
         self.user = GenerateTest.generate_test_user()
-        self.project = GenerateTest.generate_test_project()
+        self.project = GenerateTest.generate_test_project_full()
         self.project.locator
         self.buildtype = GenerateTest.generate_test_build_type(self.project)
-        self.child_project = GenerateTest.generate_test_child_project(self.project)
+        self.child_project = GenerateTest.generate_test_project_full(self.project)
 
 @pytest.fixture(scope="function") # генерирует тестовые данные для каждого теста и удаляем их после завершения теста
 def test_data():
