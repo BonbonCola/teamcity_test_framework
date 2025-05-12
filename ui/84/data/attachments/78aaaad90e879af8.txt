@@ -1,0 +1,4 @@
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:403 POST http://172.17.0.1:4444/wd/hub/session/129f7482b8ad5cd8b0958b16c519363a/url {'url': 'http://172.17.0.1:8111/login.html'}
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:436 Remote response: status=404 | data={"value":{"error":"invalid session id","message":"session timed out or not found"}}
+ | headers=HTTPHeaderDict({'Content-Length': '84', 'Content-Type': 'application/json, application/json; charset=utf-8', 'Date': 'Mon, 12 May 2025 12:19:01 GMT'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:465 Finished Request
