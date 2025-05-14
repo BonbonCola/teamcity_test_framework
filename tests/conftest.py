@@ -57,7 +57,7 @@ def per_project_permissions():
     permissions_request = ServerAuthSettingRequest(specifications.superUserSpec(), Endpoint.AUTH_SETTINGS.url)
     permissions_response = permissions_request.update(per_project_permissions.model_dump())
 
-@pytest.fixture(scope="session", params=Config().get_browser_config()) # параметризируем фикстуру на будущее, чтобы можно было запускать в разных браузерах, браузеры в конфиге
+@pytest.fixture(scope="function", params=Config().get_browser_config()) # параметризируем фикстуру на будущее, чтобы можно было запускать в разных браузерах, браузеры в конфиге
 def driver(request):
     browser, version = request.param
     options = webdriver.ChromeOptions()
@@ -79,4 +79,5 @@ def driver(request):
     yield driver
 
     if driver:
+        driver.delete_all_cookies()
         driver.quit()
