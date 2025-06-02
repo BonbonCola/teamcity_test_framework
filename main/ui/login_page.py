@@ -29,7 +29,6 @@ class LoginPage(BasePage):
     def login(self, user: User):
         self.type(self.input_username, user.username)
         self.type(self.input_password, user.password)
-        self.driver.save_screenshot("teamcity_fail2.png")
         self.click(self.button_login)
         time.sleep(10)
 

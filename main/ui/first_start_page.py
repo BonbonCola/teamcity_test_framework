@@ -31,6 +31,7 @@ class FirstStartPage(BasePage):
         self.find(self.db_type, self.long_timout)
         self.click(self.button_proceed)
         time.sleep(30)
+        time.sleep(10)
         self.find(self.agreement)
 
         agreement = self.find(self.scrollable_div)
