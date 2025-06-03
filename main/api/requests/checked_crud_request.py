@@ -13,7 +13,7 @@ class CheckedRequest(BaseCRUDRequest, Request):
     def create(self, model):
         response = self.unchecked_request.create(model)
         if response.status_code not in [200, 201]:
-            raise BadRequestException(response)
+            raise BadRequestException(response=response)
         TestDataStorage().add_created_entity(self.endpoint, response.json())
         return response
 

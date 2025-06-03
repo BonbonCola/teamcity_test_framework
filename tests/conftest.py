@@ -1,3 +1,8 @@
+import logging
+from main.utils.logger import configure_logging
+
+configure_logging()
+
 import sys
 import os
 from copy import copy
