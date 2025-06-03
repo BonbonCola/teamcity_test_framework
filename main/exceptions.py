@@ -10,12 +10,12 @@ class BadRequestException(AppException):
         self.response = response
     
     def __str__(self):
-        base_message = super.__str__()
+        base_message = super().__str__()
         if self.response:
-            base_message += f"HTTP Method: {self.response.request.method}"
-            base_message += f"URL: {self.response.request.url}"
-            base_message += f"Headers: {self.response.status_code}"
-            base_message += f"Body: {self.response.text}"
+            base_message += f"\n HTTP Method: {self.response.request.method}"
+            base_message += f"\n URL: {self.response.request.url}"
+            base_message += f"\n Headers: {self.response.status_code}"
+            base_message += f"\n Body: {self.response.text}"
         return base_message
 
 
