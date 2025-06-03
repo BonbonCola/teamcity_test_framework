@@ -1,0 +1,17 @@
+2025-06-03 14:01:43,895 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/users
+2025-06-03 14:01:43,895 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 14:01:43,895 – main.api.requests.unchecked_crud_request – INFO – Response body: {"username":"craiglawrence","id":12,"email":"william51@example.net","href":"/app/rest/users/id:12","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"craiglawrence"},{"name":"prop1","value":"even"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:12/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:12/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+2025-06-03 14:01:43,951 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/users
+2025-06-03 14:01:43,951 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 14:01:43,951 – main.api.requests.unchecked_crud_request – INFO – Response body: {"username":"warnerdennis","id":13,"email":"robertdavis@example.com","href":"/app/rest/users/id:13","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"warnerdennis"},{"name":"prop1","value":"floor"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:13/properties"},"roles":{"role":[{"roleId":"TOOLS_INTEGRATION","scope":"g","href":"/app/rest/users/id:13/roles/TOOLS_INTEGRATION/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+2025-06-03 14:01:44,005 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-03 14:01:44,005 – main.api.requests.unchecked_crud_request – INFO – Status code: 403
+2025-06-03 14:01:44,005 – main.api.requests.unchecked_crud_request – INFO – Response body: Responding with error, status code: 403 (Forbidden).
+Details: jetbrains.buildServer.serverSide.auth.AccessDeniedException: You do not have "Create subproject" permission in project with internal id: _Root
+Access denied. Check the user has enough permissions to perform the operation.
+2025-06-03 14:01:44,083 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/users/id:12
+2025-06-03 14:01:44,083 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 14:01:44,083 – main.api.requests.unchecked_crud_request – INFO – Response body: 
+2025-06-03 14:01:44,147 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/users/id:13
+2025-06-03 14:01:44,147 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 14:01:44,147 – main.api.requests.unchecked_crud_request – INFO – Response body: 

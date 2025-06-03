@@ -1,0 +1,23 @@
+2025-06-03 14:01:44,238 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-03 14:01:44,238 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 14:01:44,238 – main.api.requests.unchecked_crud_request – INFO – Response body: {"id":"economic","name":"pass","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:economic","webUrl":"http://localhost:8111/project.html?projectId=economic","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:economic/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:economic)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:economic/projectFeatures"},"projects":{"count":0}}
+2025-06-03 14:01:44,293 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-03 14:01:44,293 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 14:01:44,293 – main.api.requests.unchecked_crud_request – INFO – Response body: {"id":"manage","name":"professional","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:manage","webUrl":"http://localhost:8111/project.html?projectId=manage","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:manage/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:manage)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:manage/projectFeatures"},"projects":{"count":0}}
+2025-06-03 14:01:44,364 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/users
+2025-06-03 14:01:44,364 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 14:01:44,364 – main.api.requests.unchecked_crud_request – INFO – Response body: {"username":"robinwolfe","id":14,"email":"barberalex@example.org","href":"/app/rest/users/id:14","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"robinwolfe"},{"name":"prop1","value":"middle"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:14/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"p:manage","href":"/app/rest/users/id:14/roles/PROJECT_ADMIN/p:manage"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+2025-06-03 14:01:44,442 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-03 14:01:44,442 – main.api.requests.unchecked_crud_request – INFO – Status code: 403
+2025-06-03 14:01:44,442 – main.api.requests.unchecked_crud_request – INFO – Response body: Responding with error, status code: 403 (Forbidden).
+Details: jetbrains.buildServer.serverSide.auth.AccessDeniedException: You do not have "Create subproject" permission in project with internal id: project9
+Access denied. Check the user has enough permissions to perform the operation.
+2025-06-03 14:01:44,520 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:manage
+2025-06-03 14:01:44,520 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 14:01:44,520 – main.api.requests.unchecked_crud_request – INFO – Response body: 
+2025-06-03 14:01:44,601 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:economic
+2025-06-03 14:01:44,601 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 14:01:44,601 – main.api.requests.unchecked_crud_request – INFO – Response body: 
+2025-06-03 14:01:44,679 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/users/id:14
+2025-06-03 14:01:44,679 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 14:01:44,679 – main.api.requests.unchecked_crud_request – INFO – Response body: 
