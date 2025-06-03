@@ -1,0 +1,37 @@
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): 172.17.0.1:8111
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://172.17.0.1:8111 "POST /app/rest/projects HTTP/1.1" 200 None
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/projects
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 200
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: {"id":"ability","name":"table","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:ability","webUrl":"http://localhost:8111/project.html?projectId=ability","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:ability/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:ability)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:ability/projectFeatures"},"projects":{"count":0}}
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): 172.17.0.1:8111
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://172.17.0.1:8111 "POST /app/rest/projects HTTP/1.1" 200 None
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/projects
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 200
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: {"id":"reality","name":"work","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:reality","webUrl":"http://localhost:8111/project.html?projectId=reality","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:reality/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:reality)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:reality/projectFeatures"},"projects":{"count":0}}
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): 172.17.0.1:8111
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://172.17.0.1:8111 "POST /app/rest/users HTTP/1.1" 200 None
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/users
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 200
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: {"username":"sparksmark","id":14,"email":"paulswanson@example.com","href":"/app/rest/users/id:14","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"sparksmark"},{"name":"prop1","value":"before"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:14/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"p:reality","href":"/app/rest/users/id:14/roles/PROJECT_ADMIN/p:reality"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): 172.17.0.1:8111
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://172.17.0.1:8111 "POST /app/rest/projects HTTP/1.1" 403 None
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/projects
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 403
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: Responding with error, status code: 403 (Forbidden).
+Details: jetbrains.buildServer.serverSide.auth.AccessDeniedException: You do not have "Create subproject" permission in project with internal id: project9
+Access denied. Check the user has enough permissions to perform the operation.
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): 172.17.0.1:8111
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://172.17.0.1:8111 "DELETE /app/rest/projects/id:ability HTTP/1.1" 204 0
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:29 DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:ability
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:30 Status code: 204
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:31 Response body: 
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): 172.17.0.1:8111
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://172.17.0.1:8111 "DELETE /app/rest/projects/id:reality HTTP/1.1" 204 0
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:29 DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:reality
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:30 Status code: 204
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:31 Response body: 
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): 172.17.0.1:8111
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://172.17.0.1:8111 "DELETE /app/rest/users/id:14 HTTP/1.1" 204 0
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:29 DELETE URL: http://172.17.0.1:8111/app/rest/users/id:14
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:30 Status code: 204
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:31 Response body:

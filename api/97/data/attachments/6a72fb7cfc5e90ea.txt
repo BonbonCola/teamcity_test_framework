@@ -1,0 +1,27 @@
+2025-06-03 12:36:07,027 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:07,084 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "POST /app/rest/users HTTP/1.1" 200 None
+2025-06-03 12:36:07,086 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/users
+2025-06-03 12:36:07,086 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 12:36:07,086 – main.api.requests.unchecked_crud_request – INFO – Response body: {"username":"nancy06","id":12,"email":"heathermarshall@example.net","href":"/app/rest/users/id:12","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"nancy06"},{"name":"prop1","value":"might"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:12/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:12/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+2025-06-03 12:36:07,114 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:07,162 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "POST /app/rest/users HTTP/1.1" 200 None
+2025-06-03 12:36:07,163 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/users
+2025-06-03 12:36:07,163 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 12:36:07,163 – main.api.requests.unchecked_crud_request – INFO – Response body: {"username":"charles62","id":13,"email":"estradamichelle@example.org","href":"/app/rest/users/id:13","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"charles62"},{"name":"prop1","value":"draw"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:13/properties"},"roles":{"role":[{"roleId":"TOOLS_INTEGRATION","scope":"g","href":"/app/rest/users/id:13/roles/TOOLS_INTEGRATION/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+2025-06-03 12:36:07,191 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:07,230 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "POST /app/rest/projects HTTP/1.1" 403 None
+2025-06-03 12:36:07,232 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-03 12:36:07,232 – main.api.requests.unchecked_crud_request – INFO – Status code: 403
+2025-06-03 12:36:07,232 – main.api.requests.unchecked_crud_request – INFO – Response body: Responding with error, status code: 403 (Forbidden).
+Details: jetbrains.buildServer.serverSide.auth.AccessDeniedException: You do not have "Create subproject" permission in project with internal id: _Root
+Access denied. Check the user has enough permissions to perform the operation.
+2025-06-03 12:36:07,283 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:07,311 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "DELETE /app/rest/users/id:12 HTTP/1.1" 204 0
+2025-06-03 12:36:07,312 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/users/id:12
+2025-06-03 12:36:07,312 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 12:36:07,312 – main.api.requests.unchecked_crud_request – INFO – Response body: 
+2025-06-03 12:36:07,362 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:07,398 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "DELETE /app/rest/users/id:13 HTTP/1.1" 204 0
+2025-06-03 12:36:07,400 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/users/id:13
+2025-06-03 12:36:07,400 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 12:36:07,400 – main.api.requests.unchecked_crud_request – INFO – Response body: 

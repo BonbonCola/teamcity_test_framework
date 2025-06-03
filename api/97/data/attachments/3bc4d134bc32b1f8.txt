@@ -1,0 +1,25 @@
+2025-06-03 12:36:04,370 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:04,432 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "POST /app/rest/users HTTP/1.1" 200 None
+2025-06-03 12:36:04,437 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/users
+2025-06-03 12:36:04,437 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 12:36:04,437 – main.api.requests.unchecked_crud_request – INFO – Response body: {"username":"williamgarcia","id":4,"email":"wholmes@example.org","href":"/app/rest/users/id:4","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"williamgarcia"},{"name":"prop1","value":"tree"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:4/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:4/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+2025-06-03 12:36:04,462 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:04,495 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "POST /app/rest/projects HTTP/1.1" 200 None
+2025-06-03 12:36:04,501 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-03 12:36:04,501 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 12:36:04,501 – main.api.requests.unchecked_crud_request – INFO – Response body: {"id":"specific","name":"bank","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:specific","webUrl":"http://localhost:8111/project.html?projectId=specific","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:specific/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:specific)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:specific/projectFeatures"},"projects":{"count":0}}
+2025-06-03 12:36:04,537 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:04,573 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "GET /app/rest/projects/id:specific HTTP/1.1" 200 None
+2025-06-03 12:36:04,575 – main.api.requests.unchecked_crud_request – INFO – GET URL: http://172.17.0.1:8111/app/rest/projects/id:specific
+2025-06-03 12:36:04,575 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-03 12:36:04,575 – main.api.requests.unchecked_crud_request – INFO – Response body: {"id":"specific","name":"bank","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:specific","webUrl":"http://localhost:8111/project.html?projectId=specific","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:specific/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:specific)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:specific/projectFeatures"},"projects":{"count":0}}
+2025-06-03 12:36:04,631 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:04,651 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "DELETE /app/rest/users/id:4 HTTP/1.1" 204 0
+2025-06-03 12:36:04,651 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/users/id:4
+2025-06-03 12:36:04,651 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 12:36:04,651 – main.api.requests.unchecked_crud_request – INFO – Response body: 
+2025-06-03 12:36:04,701 – urllib3.connectionpool – DEBUG – Starting new HTTP connection (1): 172.17.0.1:8111
+2025-06-03 12:36:04,722 – urllib3.connectionpool – DEBUG – http://172.17.0.1:8111 "DELETE /app/rest/projects/id:specific HTTP/1.1" 204 0
+2025-06-03 12:36:04,723 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:specific
+2025-06-03 12:36:04,723 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-03 12:36:04,723 – main.api.requests.unchecked_crud_request – INFO – Response body: 
