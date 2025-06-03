@@ -14,8 +14,8 @@ class BadRequestException(AppException):
         if self.response:
             base_message += f"\n HTTP Method: {self.response.request.method}"
             base_message += f"\n URL: {self.response.request.url}"
-            base_message += f"\n Headers: {self.response.status_code}"
-            base_message += f"\n Body: {self.response.text}"
+            base_message += f"\n Status code: {self.response.status_code}"
+            base_message += f"\n Response body: {self.response.text}"
         return base_message
 
 
