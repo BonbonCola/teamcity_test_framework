@@ -6,6 +6,8 @@ from main.api.requests.endpoints import Endpoint
 from tests.factories.generators import GenerateTest
 from tests.helpers.test_data_storage import TestDataStorage
 
+import logging
+logger = logging.getLogger(__name__)
 
 @pytest.fixture
 def user_factory(specifications): # генерирует тестового пользователя и создает его через апи для каждого теста, удаляет их после завершения теста
