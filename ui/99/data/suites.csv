@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Jun 05 13:04:04 GMT 2025","Thu Jun 05 13:05:11 GMT 2025","67906","tests.ui_tests","test_create_build","TestCreateBuild","","","test_user_creates_build_without_name[driver0]","User should not be able to create build without a name"
+"passed","Thu Jun 05 13:01:29 GMT 2025","Thu Jun 05 13:02:36 GMT 2025","66752","tests.ui_tests","test_setup_server","TestSetupServer","","","test_setup_teamcity_server[driver0]",""
+"passed","Thu Jun 05 13:05:15 GMT 2025","Thu Jun 05 13:06:12 GMT 2025","57521","tests.ui_tests","test_create_project","TestCreateProject","","","test_user_creates_project[driver0]","User should be able to create project"
+"passed","Thu Jun 05 13:06:13 GMT 2025","Thu Jun 05 13:06:13 GMT 2025","0","tests.ui_tests","test_create_project","TestCreateProject","","","test_user_creates_project_without_name[driver0]",""
+"broken","Thu Jun 05 13:02:43 GMT 2025","Thu Jun 05 13:04:02 GMT 2025","78792","tests.ui_tests","test_create_build","TestCreateBuild","","","test_user_creates_build[driver0]","User should be able to create build"
