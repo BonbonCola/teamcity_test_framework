@@ -1,0 +1,11 @@
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/users
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 200
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: {"username":"heather84","id":8,"email":"ofowler@example.org","href":"/app/rest/users/id:8","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"heather84"},{"name":"prop1","value":"nearly"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:8/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:8/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/projects
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 400
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: Responding with error, status code: 400 (Bad Request).
+Details: jetbrains.buildServer.server.rest.errors.BadRequestException: Project name cannot be empty.
+Invalid request. Please check the request URL and data are correct.
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:29 DELETE URL: http://172.17.0.1:8111/app/rest/users/id:8
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:30 Status code: 204
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:31 Response body:
