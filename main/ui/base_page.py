@@ -54,3 +54,4 @@ class BasePage:
             logger.info(f"Текст в инпут {locator} введен")
         except (TimeoutException, NoSuchElementException):
             logger.error(f"Не удалось добавить текст в инпут {locator}", exc_info=True)
+            raise

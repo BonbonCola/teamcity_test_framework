@@ -8,6 +8,7 @@ import os
 from copy import copy
 
 import pytest
+import allure
 
 from selenium import webdriver
 from main.api.configs.config import Config
@@ -86,3 +87,15 @@ def driver(request):
     if driver:
         driver.delete_all_cookies()
         driver.quit()
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call): #вызывается после того, как тестовая функция отработала и формирует отчет
+    outcome = yield #pytest выполняет тест
+    report = outcome.get_result() #забираем результат выполнения теста
+    if report.when == "call" and report.failed: #смотрим именно фазу выполенения теста call, и если упали, то
+        driver = item.funcargs.get("driver") #забираем все фикстуры теста и берем драйвер
+        if driver:
+            png = driver.get_screenshot_as_png()
+            allure.attach(png,
+                          name=f"Скриншот_{item.name}",
+                          attachment_type=allure.attachment_type.PNG)
