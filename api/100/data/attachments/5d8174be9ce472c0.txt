@@ -1,0 +1,23 @@
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/projects
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 200
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: {"id":"ask","name":"culture","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:ask","webUrl":"http://localhost:8111/project.html?projectId=ask","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:ask/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:ask)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:ask/projectFeatures"},"projects":{"count":0}}
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/projects
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 200
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: {"id":"skin","name":"Democrat","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:skin","webUrl":"http://localhost:8111/project.html?projectId=skin","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:skin/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:skin)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:skin/projectFeatures"},"projects":{"count":0}}
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/users
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 200
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: {"username":"eric91","id":14,"email":"michaeladams@example.net","href":"/app/rest/users/id:14","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"eric91"},{"name":"prop1","value":"remember"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:14/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"p:skin","href":"/app/rest/users/id:14/roles/PROJECT_ADMIN/p:skin"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:36 POST URL: http://172.17.0.1:8111/app/rest/projects
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:37 Status code: 403
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:38 Response body: Responding with error, status code: 403 (Forbidden).
+Details: jetbrains.buildServer.serverSide.auth.AccessDeniedException: You do not have "Create subproject" permission in project with internal id: project9
+Access denied. Check the user has enough permissions to perform the operation.
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:29 DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:skin
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:30 Status code: 204
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:31 Response body: 
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:29 DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:ask
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:30 Status code: 204
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:31 Response body: 
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:29 DELETE URL: http://172.17.0.1:8111/app/rest/users/id:14
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:30 Status code: 204
+INFO     main.api.requests.unchecked_crud_request:unchecked_crud_request.py:31 Response body:

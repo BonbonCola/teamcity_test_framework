@@ -1,0 +1,17 @@
+2025-06-06 14:21:43,290 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/users
+2025-06-06 14:21:43,291 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-06 14:21:43,291 – main.api.requests.unchecked_crud_request – INFO – Response body: {"username":"michael19","id":7,"email":"richardpatrick@example.com","href":"/app/rest/users/id:7","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"michael19"},{"name":"prop1","value":"military"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:7/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"g","href":"/app/rest/users/id:7/roles/PROJECT_ADMIN/g"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+2025-06-06 14:21:43,386 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-06 14:21:43,387 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-06 14:21:43,387 – main.api.requests.unchecked_crud_request – INFO – Response body: {"id":"eight","name":"treat","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:eight","webUrl":"http://localhost:8111/project.html?projectId=eight","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:eight/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:eight)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:eight/projectFeatures"},"projects":{"count":0}}
+2025-06-06 14:21:43,470 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-06 14:21:43,470 – main.api.requests.unchecked_crud_request – INFO – Status code: 400
+2025-06-06 14:21:43,470 – main.api.requests.unchecked_crud_request – INFO – Response body: Responding with error, status code: 400 (Bad Request).
+Details: jetbrains.buildServer.serverSide.DuplicateProjectNameException: Project with this name already exists: treat
+Error occurred while processing this request.
+2025-06-06 14:21:43,560 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/users/id:7
+2025-06-06 14:21:43,560 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-06 14:21:43,560 – main.api.requests.unchecked_crud_request – INFO – Response body: 
+2025-06-06 14:21:43,640 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:eight
+2025-06-06 14:21:43,641 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-06 14:21:43,641 – main.api.requests.unchecked_crud_request – INFO – Response body: 
