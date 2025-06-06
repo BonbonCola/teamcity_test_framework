@@ -1,0 +1,23 @@
+2025-06-06 14:57:18,783 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-06 14:57:18,784 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-06 14:57:18,784 – main.api.requests.unchecked_crud_request – INFO – Response body: {"id":"remember","name":"build","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:remember","webUrl":"http://localhost:8111/project.html?projectId=remember","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:remember/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:remember)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:remember/projectFeatures"},"projects":{"count":0}}
+2025-06-06 14:57:18,854 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-06 14:57:18,854 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-06 14:57:18,854 – main.api.requests.unchecked_crud_request – INFO – Response body: {"id":"public","name":"memory","parentProjectId":"_Root","virtual":false,"href":"/app/rest/projects/id:public","webUrl":"http://localhost:8111/project.html?projectId=public","parentProject":{"id":"_Root","name":"<Root project>","description":"Contains all other projects","href":"/app/rest/projects/id:_Root","webUrl":"http://localhost:8111/project.html?projectId=_Root"},"buildTypes":{"count":0,"buildType":[]},"templates":{"count":0,"buildType":[]},"deploymentDashboards":{"count":0},"parameters":{"property":[],"count":0,"href":"/app/rest/projects/id:public/parameters"},"vcsRoots":{"count":0,"href":"/app/rest/vcs-roots?locator=project:(id:public)"},"projectFeatures":{"count":0,"href":"/app/rest/projects/id:public/projectFeatures"},"projects":{"count":0}}
+2025-06-06 14:57:18,946 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/users
+2025-06-06 14:57:18,946 – main.api.requests.unchecked_crud_request – INFO – Status code: 200
+2025-06-06 14:57:18,946 – main.api.requests.unchecked_crud_request – INFO – Response body: {"username":"scott66","id":14,"email":"anthonybennett@example.com","href":"/app/rest/users/id:14","properties":{"property":[{"name":"addTriggeredBuildToFavorites","value":"true"},{"name":"plugin:vcs:anyVcs:anyVcsRoot","value":"scott66"},{"name":"prop1","value":"project"},{"name":"teamcity.server.buildNumber","value":"147412"}],"count":4,"href":"/app/rest/users/id:14/properties"},"roles":{"role":[{"roleId":"PROJECT_ADMIN","scope":"p:public","href":"/app/rest/users/id:14/roles/PROJECT_ADMIN/p:public"}]},"groups":{"count":1,"group":[{"key":"ALL_USERS_GROUP","name":"All Users","href":"/app/rest/userGroups/key:ALL_USERS_GROUP","description":"Contains all TeamCity users"}]}}
+2025-06-06 14:57:19,035 – main.api.requests.unchecked_crud_request – INFO – POST URL: http://172.17.0.1:8111/app/rest/projects
+2025-06-06 14:57:19,036 – main.api.requests.unchecked_crud_request – INFO – Status code: 403
+2025-06-06 14:57:19,036 – main.api.requests.unchecked_crud_request – INFO – Response body: Responding with error, status code: 403 (Forbidden).
+Details: jetbrains.buildServer.serverSide.auth.AccessDeniedException: You do not have "Create subproject" permission in project with internal id: project9
+Access denied. Check the user has enough permissions to perform the operation.
+2025-06-06 14:57:19,104 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:public
+2025-06-06 14:57:19,104 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-06 14:57:19,104 – main.api.requests.unchecked_crud_request – INFO – Response body: 
+2025-06-06 14:57:19,177 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/projects/id:remember
+2025-06-06 14:57:19,177 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-06 14:57:19,178 – main.api.requests.unchecked_crud_request – INFO – Response body: 
+2025-06-06 14:57:19,239 – main.api.requests.unchecked_crud_request – INFO – DELETE URL: http://172.17.0.1:8111/app/rest/users/id:14
+2025-06-06 14:57:19,239 – main.api.requests.unchecked_crud_request – INFO – Status code: 204
+2025-06-06 14:57:19,240 – main.api.requests.unchecked_crud_request – INFO – Response body: 
